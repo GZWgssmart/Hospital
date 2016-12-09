@@ -14,7 +14,7 @@
 %>
 <html>
 <head>
-    <title>商品比价平台</title>
+    <title>管理员账号设置-青岛宝瑞液晶综合信息屏媒体系统</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/icon.css"/>
@@ -26,33 +26,28 @@
     <script src="<%=path %>/js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
     <script src="<%=path %>/js/site_easyui.js"></script>
 
-    <script src="<%=path %>/js/product/setting.js"></script>
+    <script src="<%=path %>/js/admin/setting.js"></script>
 
 
 </head>
 <body>
 <div id="errMsg"></div>
-<form:form id="updateForm" method="post" modelAttribute="product">
+<form:form id="updateForm" method="post" modelAttribute="admin">
     <table class="input_big">
-        <caption>搜索字符串</caption>
+        <caption>修改账号密码</caption>
         <tr>
-            <td>天猫：</td>
+            <td>原密码：</td>
             <td><input type="password" name="password" class="easyui-validatebox easyui-textbox"
                        data-options="required:true,validType:'length[6,20]',novalidate:true"/></td>
         </tr>
         <tr>
-            <td>京东：</td>
-            <td><input type="password" name="password" class="easyui-validatebox easyui-textbox"
+            <td>新密码:</td>
+            <td><input type="password" name="newPwd" class="easyui-validatebox easyui-textbox"
                        data-options="required:true,validType:'length[6,20]',novalidate:true"/></td>
         </tr>
         <tr>
-            <td>苏宁：</td>
-            <td><input type="password" name="password" class="easyui-validatebox easyui-textbox"
-                       data-options="required:true,validType:'length[6,20]',novalidate:true"/></td>
-        </tr>
-        <tr>
-            <td>国美：</td>
-            <td><input type="password" name="password" class="easyui-validatebox easyui-textbox"
+            <td>确认密码:</td>
+            <td><input type="password" name="conPwd" class="easyui-validatebox easyui-textbox"
                        data-options="required:true,validType:'length[6,20]',novalidate:true"/></td>
         </tr>
         <tr>

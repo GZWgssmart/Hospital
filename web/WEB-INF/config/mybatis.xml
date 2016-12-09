@@ -9,7 +9,8 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.gs.bean.Product" alias="product"/>
+        <typeAlias type="com.gs.bean.Admin" alias="admin"/>
+        <typeAlias type="com.gs.bean.User" alias="user" />
     </typeAliases>
 
     <mappers></mappers>

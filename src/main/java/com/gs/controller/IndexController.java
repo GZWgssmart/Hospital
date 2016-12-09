@@ -14,13 +14,13 @@ public class IndexController {
 
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public String home(Model model) {
-        return "product/home";
+        return "index/home";
     }
 
     @RequestMapping(value = "redirect_index",method = RequestMethod.GET)
     public String redirectHome(Model model) {
         model.addAttribute("redirect", "redirect");
-        return "product/home";
+        return "index/home";
     }
 
 }

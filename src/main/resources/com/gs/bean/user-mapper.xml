@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.UserDAO">
+
+    <resultMap id="userResultMap" type="user">
+        <id property="id" column="id" />
+        <result property="createTime" column="create_time" />
+        <result property="lastLoginTime" column="last_login_time" />
+        <result property="loginTime" column="login_time" />
+        <result property="lastUpdateTime" column="last_update_time" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="userResultMap">
+        <![CDATA[
+        select * from t_customer where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="user" resultMap="userResultMap">
+        <![CDATA[
+        select * from t_customer where email=#{email} and password = #{password} and status = 'Y'
+        ]]>
+    </select>
+
+    <select id="queryAll" resultType="list" resultMap="userResultMap">
+        <![CDATA[
+        select * from t_customer
+        ]]>
+    </select>
+
+    <select id="queryByPager" resultType="list" resultMap="userResultMap" parameterType="com.gs.common.bean.Pager">
+        <![CDATA[
+        select * from t_customer limit #{beginIndex}, #{pageSize}
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="userResultMap">
+        <![CDATA[
+        select * from t_customer where 1 = 1
+        ]]>
+        <if test="customer.email != null and customer.email != ''">
+            and email like concat('%', #{customer.email}, '%')
+        </if>
+        <if test="customer.name != null and customer.name !=''">
+            and name like concat('%', #{customer.name}, '%')
+        </if>
+        <if test="customer.phone != null and customer.phone !=''">
+            and phone like concat('%', #{customer.phone}, '%')
+        </if>
+        <if test="customer.status != null and customer.status != ''">
+            and status = #{customer.status}
+        </if>
+        order by create_time desc
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_customer where 1 = 1
+        ]]>
+        <if test="customer.email != null and customer.email != ''">
+            and email like concat('%', #{customer.email}, '%')
+        </if>
+        <if test="customer.name != null and customer.name !=''">
+            and name like concat('%', #{customer.name}, '%')
+        </if>
+        <if test="customer.phone != null and customer.phone !=''">
+            and phone like concat('%', #{customer.phone}, '%')
+        </if>
+        <if test="customer.status != null and customer.status != ''">
+            and status = #{customer.status}
+        </if>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="user">
+        <![CDATA[
+        insert into t_customer(id, email, password, name, phone, address) values(uuid(), #{email}, #{password}, #{name}, #{phone}, #{address})
+        ]]>
+    </insert>
+
+    <update id="updateLoginTime" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_customer set last_login_time = login_time, login_time = CURRENT_TIMESTAMP where id = #{id}
+        ]]>
+    </update>
+
+    <update id="update" keyProperty="id" parameterType="user">
+        <![CDATA[
+        update t_customer set name = #{name}, phone = #{phone}, address = #{address}, last_update_time = CURRENT_TIMESTAMP where id = #{id}
+        ]]>
+    </update>
+
+    <update id="updatePassword" keyProperty="id" parameterType="user">
+        <![CDATA[
+        update t_customer set password = #{password} where id = #{id}
+        ]]>
+    </update>
+
+    <update id="inactive" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_customer set status = 'N' where id = #{id}
+        ]]>
+    </update>
+
+    <update id="active" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_customer set status = 'Y' where id = #{id}
+        ]]>
+    </update>
+
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="list" parameterType="list">
+        <![CDATA[
+        insert into t_customer(email, password) VALUES
+        ]]>
+        <foreach collection="list" item="item" index="index" separator=",">
+            <![CDATA[
+            (#{item.email}, #{item.password})
+            ]]>
+        </foreach>
+
+    </insert>
+</mapper>
