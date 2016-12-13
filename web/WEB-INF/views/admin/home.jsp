@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>管理员主页-青岛宝瑞液晶综合信息屏媒体系统</title>
+    <title>管理员主页-***医院系统</title>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="<%=path %>/css/site_main.css"/>
     <script type="text/javascript" src="<%=path %>/js/jquery.min.js"></script>

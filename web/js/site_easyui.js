@@ -210,6 +210,10 @@ function toPage(url) {
     window.location.href = url;
 }
 
+function toAdminLoginPage() {
+    top.location.href = "/admin/login_page";
+}
+
 //////////////////////////////////////
 
 function formatterDate(value) {

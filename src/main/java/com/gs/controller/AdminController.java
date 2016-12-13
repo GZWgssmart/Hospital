@@ -142,10 +142,10 @@ public class AdminController {
 
     @ResponseBody
     @RequestMapping(value = "update_pwd", method = RequestMethod.POST)
-    public ControllerResult updatePwd(@Param("password")String password, @Param("newPwd")String newPwd, @Param("conPwd")String conPwd, HttpSession session) {
+    public ControllerResult updatePwd(@Param("pwd")String pwd, @Param("newPwd")String newPwd, @Param("conPwd")String conPwd, HttpSession session) {
         if (SessionUtil.isAdmin(session)) {
             Admin admin = (Admin) session.getAttribute(Constants.SESSION_ADMIN);
-            if (admin.getPwd().equals(EncryptUtil.md5Encrypt(password)) && newPwd != null && conPwd != null && newPwd.equals(conPwd)) {
+            if (admin.getPwd().equals(EncryptUtil.md5Encrypt(pwd)) && newPwd != null && conPwd != null && newPwd.equals(conPwd)) {
                 admin.setPwd(EncryptUtil.md5Encrypt(newPwd));
                 adminService.updatePassword(admin);
                 session.setAttribute(Constants.SESSION_ADMIN, admin);

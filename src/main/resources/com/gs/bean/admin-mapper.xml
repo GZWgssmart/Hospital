@@ -4,7 +4,7 @@
 
     <resultMap id="adminResultMap" type="admin">
         <id property="id" column="id" />
-        <result property="createTime" column="created_time" />
+        <result property="createdTime" column="created_time" />
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="adminResultMap">
@@ -30,7 +30,7 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="admin">
         <![CDATA[
-        insert into t_admin(email, pwd, name, phone) values(#{email}, #{password}, #{name}, #{phone})
+        insert into t_admin(email, pwd, name, phone) values(#{email}, #{pwd}, #{name}, #{phone})
         ]]>
     </insert>
 
@@ -42,7 +42,7 @@
 
     <update id="updatePassword" keyProperty="id" parameterType="admin">
         <![CDATA[
-        update t_admin set password = #{password} where id = #{id}
+        update t_admin set pwd = #{pwd} where id = #{id}
         ]]>
     </update>
 

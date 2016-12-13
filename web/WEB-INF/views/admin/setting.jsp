@@ -14,7 +14,7 @@
 %>
 <html>
 <head>
-    <title>管理员账号设置-青岛宝瑞液晶综合信息屏媒体系统</title>
+    <title>管理员账号设置-***医院系统</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/icon.css"/>
@@ -37,7 +37,7 @@
         <caption>修改账号密码</caption>
         <tr>
             <td>原密码：</td>
-            <td><input type="password" name="password" class="easyui-validatebox easyui-textbox"
+            <td><input type="password" name="pwd" class="easyui-validatebox easyui-textbox"
                        data-options="required:true,validType:'length[6,20]',novalidate:true"/></td>
         </tr>
         <tr>
