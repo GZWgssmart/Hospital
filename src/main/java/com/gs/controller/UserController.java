@@ -205,29 +205,6 @@ public class UserController {
         }
     }
 
-    @ResponseBody
-    @RequestMapping(value = "inactive", method = RequestMethod.GET)
-    public ControllerResult inactive(@Param("id")String id, HttpSession session) {
-        if (SessionUtil.isAdmin(session)) {
-            userService.inactive(id);
-            return ControllerResult.getSuccessResult("冻结客户账号成功");
-        } else {
-            return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
-        }
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "active", method = RequestMethod.GET)
-    public ControllerResult active(@Param("id")String id, HttpSession session) {
-        if (SessionUtil.isAdmin(session)) {
-            userService.active(id);
-            return ControllerResult.getSuccessResult("已解除客户账号冻结");
-        } else {
-            return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
-        }
-    }
-
-
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

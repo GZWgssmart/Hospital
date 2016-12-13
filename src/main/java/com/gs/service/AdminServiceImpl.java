@@ -23,11 +23,6 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Admin> queryAll(String status) {
-        return adminDAO.queryAll(status);
-    }
-
-    @Override
     public Admin queryById(String id) {
         return adminDAO.queryById(id);
     }
@@ -43,23 +38,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public int delete(Admin admin) {
+        return adminDAO.delete(admin);
+    }
+
+    @Override
+    public int deleteById(String id) {
+        return adminDAO.deleteById(id);
+    }
+
+    @Override
     public int update(Admin admin) {
         return adminDAO.update(admin);
-    }
-
-    @Override
-    public int inactive(String id) {
-        return adminDAO.inactive(id);
-    }
-
-    @Override
-    public int active(String id) {
-        return adminDAO.active(id);
-    }
-
-    @Override
-    public int batchInsert(List<Admin> admins) {
-        return adminDAO.batchInsert(admins);
     }
 
     @Override
@@ -70,11 +60,6 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int count() {
         return adminDAO.count();
-    }
-
-    @Override
-    public int updateLoginTime(String id) {
-        return adminDAO.updateLoginTime(id);
     }
 
     @Override

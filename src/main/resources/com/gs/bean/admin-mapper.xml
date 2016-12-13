@@ -4,9 +4,7 @@
 
     <resultMap id="adminResultMap" type="admin">
         <id property="id" column="id" />
-        <result property="createTime" column="create_time" />
-        <result property="lastLoginTime" column="last_login_time" />
-        <result property="loginTime" column="login_time" />
+        <result property="createTime" column="created_time" />
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="adminResultMap">
@@ -17,7 +15,7 @@
 
     <select id="query" parameterType="admin" resultMap="adminResultMap">
         <![CDATA[
-        select * from t_admin where email=#{email} and password = #{password} and status = 'Y'
+        select * from t_admin where email=#{email} and pwd = #{pwd}
         ]]>
     </select>
 
@@ -25,64 +23,16 @@
         <![CDATA[
         select * from t_admin where 1 = 1
         ]]>
-        <if test="admin.email != null and admin.email != ''">
-            and email like concat('%', #{admin.email}, '%')
-        </if>
-        <if test="admin.name != null and admin.name !=''">
-            and name like concat('%', #{admin.name}, '%')
-        </if>
-        <if test="admin.phone != null and admin.phone !=''">
-            and phone like concat('%', #{admin.phone}, '%')
-        </if>
-        <if test="admin.status != null and admin.status != ''">
-            and status = #{admin.status}
-        </if>
-        order by create_time desc
+        order by created_time desc
         limit #{pager.beginIndex}, #{pager.pageSize}
 
     </select>
 
-    <select id="countByCriteria" resultType="int">
-        <![CDATA[
-        select count(1) from t_admin where 1 = 1
-        ]]>
-        <if test="admin.email != null and admin.email != ''">
-            and email = #{admin.email}
-        </if>
-        <if test="admin.name != null and admin.name !=''">
-            and name = #{admin.name}
-        </if>
-        <if test="admin.phone != null and admin.phone !=''">
-            and phone = #{admin.phone}
-        </if>
-        <if test="admin.status != null and admin.status != ''">
-            and status = #{admin.status}
-        </if>
-    </select>
-
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="admin">
         <![CDATA[
-        insert into t_admin(id, email, password, name, phone, role) values(uuid(), #{email}, #{password}, #{name}, #{phone}, #{role})
+        insert into t_admin(email, pwd, name, phone) values(#{email}, #{password}, #{name}, #{phone})
         ]]>
     </insert>
-
-    <update id="inactive" keyProperty="id" parameterType="string">
-        <![CDATA[
-        update t_admin set status = 'N' where id = #{id}
-        ]]>
-    </update>
-
-    <update id="active" keyProperty="id" parameterType="string">
-        <![CDATA[
-        update t_admin set status = 'Y' where id = #{id}
-        ]]>
-    </update>
-
-    <update id="updateLoginTime" keyProperty="id" parameterType="string">
-        <![CDATA[
-        update t_admin set last_login_time = login_time, login_time = CURRENT_TIMESTAMP where id = #{id}
-        ]]>
-    </update>
 
     <update id="update" keyProperty="id" parameterType="admin">
         <![CDATA[

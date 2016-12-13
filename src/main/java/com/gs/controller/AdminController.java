@@ -93,15 +93,6 @@ public class AdminController {
         }
     }
 
-    @RequestMapping(value = "list_page", method = RequestMethod.GET)
-    public String toListPage(HttpSession session) {
-        if (SessionUtil.isAdmin(session)) {
-            return "admin/admins";
-        } else {
-            return "redirect:redirect_login_page";
-        }
-    }
-
     @ResponseBody
     @RequestMapping(value = "search_pager", method = RequestMethod.GET)
     public Pager4EasyUI<Admin> searchPager(@Param("page")String page, @Param("rows")String rows, Admin admin, HttpSession session) {

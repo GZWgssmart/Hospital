@@ -10,15 +10,13 @@ import java.util.List;
  */
 public interface BaseService<T, PK extends Serializable> {
 
-    public List<T> queryAll();
-    public List<T> queryAll(String status);
-    public T queryById(PK pk);
-    public T query(T t);
     public int insert(T t);
+    public int delete(T t);
+    public int deleteById(PK id);
     public int update(T t);
+    public List<T> queryAll();
+    public T query(T t);
+    public T queryById(PK id);
     public List<T> queryByPager(Pager pager);
     public int count();
-    public int inactive(PK pk);
-    public int active(PK pk);
-    public int batchInsert(List<T> tList);
 }

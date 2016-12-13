@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface UserService extends BaseService<User, String> {
 
-    public int updateLoginTime(String id);
     public int updatePassword(User user);
 
     public List<User> queryByPagerAndCriteria(Pager pager, User user);

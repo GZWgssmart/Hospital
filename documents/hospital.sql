@@ -13,6 +13,8 @@ create table t_admin(
   created_time datetime comment '创建时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+INSERT INTO t_admin(email, pwd, name, phone) VALUES ('admin@126.com', '6khXbzC+FmmXFpnAmtBclA==', 'admin', '18888888888');
+
 /*用户表*/
 DROP TABLE IF EXISTS t_user;
 create table t_user(

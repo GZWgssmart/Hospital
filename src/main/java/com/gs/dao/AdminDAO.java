@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface AdminDAO extends BaseDAO<Admin, String> {
 
-    public int updateLoginTime(String id);
     public int updatePassword(Admin admin);
 
     public List<Admin> queryByPagerAndCriteria(@Param("pager") Pager pager,

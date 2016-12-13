@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface AdminService extends BaseService<Admin, String> {
 
-    public int updateLoginTime(String id);
     public int updatePassword(Admin admin);
 
     public List<Admin> queryByPagerAndCriteria(Pager pager, Admin admin);

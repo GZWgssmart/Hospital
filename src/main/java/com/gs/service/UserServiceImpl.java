@@ -23,11 +23,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryAll(String status) {
-        return userDAO.queryAll(status);
-    }
-
-    @Override
     public User queryById(String id) {
         return userDAO.queryById(id);
     }
@@ -43,13 +38,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int update(User user) {
-        return userDAO.update(user);
+    public int delete(User user) {
+        return userDAO.delete(user);
     }
 
     @Override
-    public int batchInsert(List<User> users) {
-        return userDAO.batchInsert(users);
+    public int deleteById(String id) {
+        return userDAO.deleteById(id);
+    }
+
+    @Override
+    public int update(User user) {
+        return userDAO.update(user);
     }
 
     @Override
@@ -63,30 +63,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updateLoginTime(String id) {
-        return userDAO.updateLoginTime(id);
-    }
-
-    @Override
     public int updatePassword(User user) {
         return userDAO.updatePassword(user);
     }
 
+    @Override
     public List<User> queryByPagerAndCriteria(Pager pager, User user) {
         return userDAO.queryByPagerAndCriteria(pager, user);
     }
 
+    @Override
     public int countByCriteria(User user) {
         return userDAO.countByCriteria(user);
     }
 
-    @Override
-    public int inactive(String id) {
-        return userDAO.inactive(id);
-    }
-
-    @Override
-    public int active(String id) {
-        return userDAO.active(id);
-    }
 }
