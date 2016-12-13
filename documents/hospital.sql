@@ -10,7 +10,7 @@ create table t_admin(
   pwd VARCHAR(30) not null COMMENT '密码',
   name VARCHAR(30) COMMENT '姓名',
   phone varchar(11) comment '手机号',
-  created_time datetime comment '创建时间'
+  created_time datetime DEFAULT current_timestamp comment '创建时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO t_admin(email, pwd, name, phone) VALUES ('admin@126.com', '6khXbzC+FmmXFpnAmtBclA==', 'admin', '18888888888');
@@ -22,7 +22,7 @@ create table t_user(
   name varchar(30) COMMENT '用户名称',
   pwd varchar(30) not null COMMENT '用户密码',
   phone varchar(11) COMMENT '手机号',
-  created_time datetime COMMENT '创建时间'
+  created_time datetime DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 /*医院基本信息表*/
@@ -70,7 +70,7 @@ create table t_news(
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
   content	text COMMENT '内容',
-  pub_time datetime COMMENT '发布时间'
+  pub_time datetime DEFAULT current_timestamp COMMENT '发布时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 alter table t_news ADD CONSTRAINT fk_news_admin_id FOREIGN KEY (admin_id) REFERENCES t_admin(id);
@@ -83,7 +83,7 @@ create table t_message(
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
   content	text COMMENT '内容',
-  send_time datetime COMMENT '发送时间',
+  send_time datetime DEFAULT current_timestamp COMMENT '发送时间',
   user_id int COMMENT '接收人编号'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -112,7 +112,7 @@ create table t_article(
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
   content text COMMENT '内容',
-  pub_time datetime COMMENT '发布时间'
+  pub_time datetime DEFAULT current_timestamp COMMENT '发布时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 alter table t_article ADD CONSTRAINT fk_article_type_id FOREIGN KEY (type_id) REFERENCES t_article_type(id);

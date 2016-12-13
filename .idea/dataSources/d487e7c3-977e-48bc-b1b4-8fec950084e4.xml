@@ -48,6 +48,7 @@
     <column id="24" parent="10" name="created_time">
       <comment>创建时间</comment>
       <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
     <index id="25" parent="10" name="email">
       <columns>email</columns>
@@ -91,6 +92,7 @@
     <column id="34" parent="11" name="pub_time">
       <comment>发布时间</comment>
       <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
     <index id="35" parent="11" name="fk_article_admin_id">
       <columns>admin_id</columns>
@@ -264,6 +266,7 @@
     <column id="73" parent="16" name="send_time">
       <comment>发送时间</comment>
       <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
     <column id="74" parent="16" name="user_id">
       <comment>接收人编号</comment>
@@ -318,6 +321,7 @@
     <column id="85" parent="17" name="pub_time">
       <comment>发布时间</comment>
       <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
     <index id="86" parent="17" name="fk_news_admin_id">
       <columns>admin_id</columns>
@@ -355,6 +359,7 @@
     <column id="93" parent="18" name="created_time">
       <comment>创建时间</comment>
       <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
     </column>
     <key id="94" parent="18" name="PRIMARY">
       <columns>id</columns>
