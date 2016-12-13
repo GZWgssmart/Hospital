@@ -14,7 +14,7 @@
 %>
 <html>
 <head>
-    <title>管理员信息-青岛宝瑞液晶综合信息屏媒体系统</title>
+    <title>管理员信息-***医院系统</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/icon.css"/>
@@ -51,42 +51,8 @@
         <td>${requestScope.admin.phone }</td>
     </tr>
     <tr>
-        <td>角色</td>
-        <td>
-            <c:choose>
-                <c:when test="${requestScope.admin.role == 'super' }">
-                    超级管理员
-                </c:when>
-                <c:otherwise>
-                    普通管理员
-                </c:otherwise>
-            </c:choose>
-        </td>
-    </tr>
-    <tr>
-        <td>状态</td>
-        <td>
-            <c:choose>
-                <c:when test="${requestScope.admin.status == 'Y' }">
-                    可用
-                </c:when>
-                <c:otherwise>
-                    不可用
-                </c:otherwise>
-            </c:choose>
-        </td>
-    </tr>
-    <tr>
         <td>创建时间</td>
-        <td><fmt:formatDate value="${requestScope.admin.createTime }" pattern="yyyy/MM/dd HH:mm:ss" /></td>
-    </tr>
-    <tr>
-        <td>上一次登录时间</td>
-        <td><fmt:formatDate value="${requestScope.admin.lastLoginTime }" pattern="yyyy/MM/dd HH:mm:ss" /></td>
-    </tr>
-    <tr>
-        <td>登录时间</td>
-        <td><fmt:formatDate value="${requestScope.admin.loginTime }" pattern="yyyy/MM/dd HH:mm:ss" /></td>
+        <td><fmt:formatDate value="${requestScope.admin.createdTime }" pattern="yyyy/MM/dd HH:mm:ss" /></td>
     </tr>
     </thead>
 </table>
