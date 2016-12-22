@@ -28,6 +28,12 @@
 
     </select>
 
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_admin where 1 = 1
+        ]]>
+    </select>
+
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="admin">
         <![CDATA[
         insert into t_admin(email, pwd, name, phone) values(#{email}, #{pwd}, #{name}, #{phone})
