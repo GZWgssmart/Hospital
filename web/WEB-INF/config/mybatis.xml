@@ -11,6 +11,13 @@
     <typeAliases>
         <typeAlias type="com.gs.bean.Admin" alias="admin"/>
         <typeAlias type="com.gs.bean.User" alias="user" />
+        <typeAlias type="com.gs.bean.Hospital" alias="hospital" />
+        <typeAlias type="com.gs.bean.Department" alias="dept" />
+        <typeAlias type="com.gs.bean.Doctor" alias="doctor" />
+        <typeAlias type="com.gs.bean.ArticleType" alias="articleType" />
+        <typeAlias type="com.gs.bean.Article" alias="article" />
+        <typeAlias type="com.gs.bean.News" alias="news" />
+        <typeAlias type="com.gs.bean.Message" alias="msg" />
     </typeAliases>
 
     <mappers></mappers>

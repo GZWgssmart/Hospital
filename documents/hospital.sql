@@ -31,14 +31,14 @@ create table t_hospital(
   id int primary key auto_increment COMMENT '医院编号',
   name VARCHAR(50) NOT NULL COMMENT '名字',
   level VARCHAR(30) COMMENT '等级',
-  address	varchar(100) COMMENT '医院地址',
+  address varchar(100) COMMENT '医院地址',
   tel_no varchar(12) COMMENT '电话',
-  web_address	varchar(30) COMMENT '官方网站链接',
-  bus_line	varchar(500) COMMENT '公交路线',
-  longidute	double COMMENT '经度',
-  laditude	double COMMENT '纬度',
+  web_address varchar(30) COMMENT '官方网站链接',
+  bus_line varchar(500) COMMENT '公交路线',
+  longidute double COMMENT '经度',
+  laditude double COMMENT '纬度',
   image varchar(500) COMMENT '平面图',
-  des	text COMMENT '描述'
+  des text COMMENT '描述'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 /*医院科室表*/
@@ -69,7 +69,7 @@ create table t_news(
   title VARCHAR(50) COMMENT '标题',
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
-  content	text COMMENT '内容',
+  content text COMMENT '内容',
   pub_time datetime DEFAULT current_timestamp COMMENT '发布时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -82,7 +82,7 @@ create table t_message(
   title VARCHAR(50) COMMENT '标题',
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
-  content	text COMMENT '内容',
+  content text COMMENT '内容',
   send_time datetime DEFAULT current_timestamp COMMENT '发送时间',
   user_id int COMMENT '接收人编号'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;

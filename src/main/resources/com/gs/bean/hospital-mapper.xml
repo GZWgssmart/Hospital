@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.HospitalDAO">
+
+    <resultMap id="hospitalResultMap" type="hospital">
+        <id property="id" column="id" />
+        <result property="telNo" column="tel_no" />
+        <result property="busLine" column="bus_line" />
+        <result property="webAddress" column="web_address" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="hospitalResultMap">
+        <![CDATA[
+        select * from t_hospital where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="hospital" resultMap="hospitalResultMap">
+        <![CDATA[
+        select * from t_hospital
+        ]]>
+    </select>
+
+    <select id="queryAll" resultType="list" resultMap="hospitalResultMap">
+        <![CDATA[
+        select * from t_hospital where 1 = 1
+        ]]>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="hospital">
+        <![CDATA[
+        insert into t_hospital(name, level, address, tel_no, web_address, bus_line, longidute, laditude, des)
+        values(#{name}, #{level}, #{address}, #{telNo}, #{webAddress}, #{busLine}, #{longidute}, #{laditude}, #{des})
+        ]]>
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="hospital">
+        <![CDATA[
+        update t_hospital set name = #{name}, level = #{level}, address= #{address}, tel_no = #{telNo},
+        web_address = #{webAddress}, bus_line = #{busLine}, longidute = #{longidute}, laditude = #{laditude}, des = #{des} where id = #{id}
+        ]]>
+    </update>
+</mapper>

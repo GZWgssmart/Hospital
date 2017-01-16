@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.DoctorDAO">
+
+    <resultMap id="docResultMap" type="doctor">
+        <id property="id" column="id" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="docResultMap">
+        <![CDATA[
+        select * from t_doctor where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="dept" resultMap="docResultMap">
+        <![CDATA[
+        select * from t_doctor
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="docResultMap">
+        <![CDATA[
+        select * from t_doctor where 1 = 1
+        ]]>
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_doctor where 1 = 1
+        ]]>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="dept">
+        <![CDATA[
+        insert into t_doctor(name, major, des) values(#{name}, #{major}, #{des})
+        ]]>
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="dept">
+        <![CDATA[
+        update t_doctor set name = #{name}, major = #{major}, des = #{des} where id = #{id}
+        ]]>
+    </update>
+
+</mapper>

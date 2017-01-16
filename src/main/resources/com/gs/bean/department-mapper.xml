@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.DepartmentDAO">
+
+    <resultMap id="deptResultMap" type="dept">
+        <id property="id" column="id" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="deptResultMap">
+        <![CDATA[
+        select * from t_department where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="dept" resultMap="deptResultMap">
+        <![CDATA[
+        select * from t_department
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="deptResultMap">
+        <![CDATA[
+        select * from t_department where 1 = 1
+        ]]>
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_department where 1 = 1
+        ]]>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="dept">
+        <![CDATA[
+        insert into t_department(name, address, des) values(#{name}, #{address}, #{des})
+        ]]>
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="dept">
+        <![CDATA[
+        update t_department set name = #{name}, address = #{address}, des = #{des} where id = #{id}
+        ]]>
+    </update>
+
+</mapper>

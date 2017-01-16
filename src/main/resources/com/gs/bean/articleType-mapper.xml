@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.ArticleTypeDAO">
+
+    <resultMap id="atResultMap" type="articleType">
+        <id property="id" column="id" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="atResultMap">
+        <![CDATA[
+        select * from t_article_type where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="articleType" resultMap="atResultMap">
+        <![CDATA[
+        select * from t_article_type
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="atResultMap">
+        <![CDATA[
+        select * from t_article_type where 1 = 1
+        ]]>
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_article_type where 1 = 1
+        ]]>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="articleType">
+        <![CDATA[
+        insert into t_article_type(name) values(#{name})
+        ]]>
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="articleType">
+        <![CDATA[
+        update t_article_type set name = #{name} where id = #{id}
+        ]]>
+    </update>
+
+</mapper>

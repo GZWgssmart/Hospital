@@ -10,6 +10,8 @@ public class Doctor {
     private String major;
     private String des;
 
+    private Department dept;
+
     public int getId() {
         return id;
     }
@@ -40,5 +42,13 @@ public class Doctor {
 
     public void setDes(String des) {
         this.des = des;
+    }
+
+    public Department getDept() {
+        return dept;
+    }
+
+    public void setDept(Department dept) {
+        this.dept = dept;
     }
 }

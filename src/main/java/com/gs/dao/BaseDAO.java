@@ -1,7 +1,6 @@
 package com.gs.dao;
 
 import com.gs.common.bean.Pager;
-import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
 import java.util.List;

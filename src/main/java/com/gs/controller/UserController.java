@@ -86,7 +86,7 @@ public class UserController {
         if (SessionUtil.isAdmin(session)) {
             user.setPwd(EncryptUtil.md5Encrypt(user.getPwd()));
             userService.insert(user);
-            return ControllerResult.getSuccessResult("成功添加客户信息");
+            return ControllerResult.getSuccessResult("成功添加用户信息");
         }
         return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
     }
@@ -109,22 +109,6 @@ public class UserController {
         } else {
             return "redirect:/admin/redirect_login_page";
         }
-    }
-
-    @RequestMapping(value = "list_page_admin/{type}", method = RequestMethod.GET)
-    public String toListPageAdmin(@PathVariable("type") String type, HttpSession session) {
-        if (SessionUtil.isAdmin(session)) {
-            if (type.equals("res")) {
-                return "user/users_res_admin";
-            } else if (type.equals("dev")) {
-                return "user/users_dev_admin";
-            } else if(type.equals("devgroup")) {
-                return "user/users_devg_admin";
-            } else if (type.equals("pub")) {
-                return "user/users_pubplan_admin";
-            }
-        }
-        return "redirect:/admin/redirect_login_page";
     }
 
     @ResponseBody
@@ -188,18 +172,6 @@ public class UserController {
             } else {
                 return ControllerResult.getFailResult("原密码错误,或新密码与确认密码不一致");
             }
-        } else {
-            return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
-        }
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "update_other_pwd", method = RequestMethod.POST)
-    public ControllerResult updateOtherPwd(User user, HttpSession session) {
-        if (SessionUtil.isAdmin(session)) {
-            user.setPwd(EncryptUtil.md5Encrypt(user.getPwd()));
-            userService.updatePassword(user);
-            return ControllerResult.getSuccessResult("更新用户密码成功");
         } else {
             return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
         }

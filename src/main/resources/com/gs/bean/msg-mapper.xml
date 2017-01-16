@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.MsgDAO">
+
+    <resultMap id="msgResultMap" type="msg">
+        <id property="id" column="id" />
+        <result property="sendTime" column="send_time" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="msgResultMap">
+        <![CDATA[
+        select * from t_message where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="article" resultMap="msgResultMap">
+        <![CDATA[
+        select * from t_message
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="msgResultMap">
+        <![CDATA[
+        select * from t_message where 1 = 1
+        ]]>
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_message where 1 = 1
+        ]]>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="article">
+        <![CDATA[
+        insert into t_message(title, author, content, send_time) values(#{title}, #{author}, #{content}, #{sendTime})
+        ]]>
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="article">
+        <![CDATA[
+        update t_message set title = #{title}, author = #{author}, content = #{content} where id = #{id}
+        ]]>
+    </update>
+
+</mapper>

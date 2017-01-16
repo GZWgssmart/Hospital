@@ -14,7 +14,7 @@ $(function() {
 function add() {
     toValidate("addForm");
     if (validateForm("addForm")) {
-        $.post(contextPath + "/customer/add",
+        $.post(contextPath + "/user/add",
             $("#addForm").serialize(),
             function (data) {
                 if (data.result == "success") {
@@ -46,7 +46,7 @@ function showEdit() {
 function edit() {
     toValidate("editForm");
     if (validateForm("editForm")) {
-        $.post(contextPath + "/customer/update",
+        $.post(contextPath + "/user/update",
             $("#editForm").serialize(),
             function (data) {
                 if (data.result == "success") {
@@ -82,7 +82,7 @@ function updatePwd() {
     if (validateForm("editPwdForm")) {
         $.messager.confirm("提示", "更新该客户密码，是否继续?", function(r) {
             if (r) {
-                $.post(contextPath + "/customer/update_other_pwd",
+                $.post(contextPath + "/user/update_other_pwd",
                     $("#editPwdForm").serialize(),
                     function (data) {
                         if (data.result == "success") {
@@ -104,55 +104,9 @@ function updatePwd() {
     }
 }
 
-function inactive() {
-    var row = selectedRow("list");
-    if (row) {
-        if (row.status == 'N') {
-            $.messager.alert("提示", "客户账号不可用,无需冻结", "info");
-        } else {
-            $.get(contextPath + "/customer/inactive?id=" + row.id,
-                function (data) {
-                    if (data.result == "success") {
-                        $.messager.alert("提示", data.message, "info");
-                        dataGridReload("list");
-                    } else if (data.result == 'notLogin') {
-                        $.messager.alert("提示", data.message, "info", function() {
-                            toAdminLoginPage();
-                        });
-                    }
-                });
-        }
-    } else {
-        $.messager.alert("提示", "请选择需要冻结的客户账号", "info");
-    }
-}
-
-function active() {
-    var row = selectedRow("list");
-    if (row) {
-        if (row.status == 'Y') {
-            $.messager.alert("提示", "客户账号可用,无需激活", "info");
-        } else {
-            $.get(contextPath + "/customer/active?id=" + row.id,
-                function (data) {
-                    if (data.result == "success") {
-                        $.messager.alert("提示", data.message, "info");
-                        dataGridReload("list");
-                    } else if (data.result == 'notLogin') {
-                        $.messager.alert("提示", data.message, "info", function() {
-                            toAdminLoginPage();
-                        });
-                    }
-                });
-        }
-    } else {
-        $.messager.alert("提示", "请选择需要激活的客户账号", "info");
-    }
-}
-
 function doSearch() {
     $("#list").datagrid({
-        url:contextPath + '/customer/search_pager',
+        url:contextPath + '/user/search_pager',
         pageSize:20,
         queryParams:getQueryParams("list", "searchForm")
     });
@@ -162,7 +116,7 @@ function doSearch() {
 function searchAll() {
     $("#searchForm").form("clear");
     $("#list").datagrid({
-        url:contextPath + '/customer/search_pager',
+        url:contextPath + '/user/search_pager',
         pageSize:20,
         queryParams:getQueryParams("list", "searchForm")
     });

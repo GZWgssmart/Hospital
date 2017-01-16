@@ -33,22 +33,22 @@
 <div data-options="region:'west',split:true,title:'功能菜单'" class="west">
     <div class="easyui-accordion" data-options="border:false">
         <div title="医院管理" class="site_menu">
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page_admin/res" class="site-navi-tab">医院信息</a></p>
-            <a href="javascript:void(0);" src="<%=path %>/restype/list_page" class="site-navi-tab">科室列表</a></p>
-            <a href="javascript:void(0);" src="<%=path %>/restype/list_page" class="site-navi-tab">医生列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/hospital/query" class="site-navi-tab">医院信息</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/dept/list_page" class="site-navi-tab">科室列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/doctor/list_page" class="site-navi-tab">医生列表</a></p>
         </div>
         <div title="用户管理" class="site_menu">
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page" class="site-navi-tab">用户列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/user/list_page" class="site-navi-tab">用户列表</a></p>
         </div>
         <div title="新闻管理" class="site_menu">
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page_admin/dev" class="site-navi-tab">新闻列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/news/list_page" class="site-navi-tab">新闻列表</a></p>
         </div>
         <div title="文章管理" class="site_menu">
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page_admin/pub" class="site-navi-tab">文章类型列表</a></p>
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page_admin/pub" class="site-navi-tab">文章列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/articleType/list_page" class="site-navi-tab">文章类型列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/article/list_page" class="site-navi-tab">文章列表</a></p>
         </div>
         <div title="消息管理" class="site_menu">
-            <a href="javascript:void(0);" src="<%=path %>/customer/list_page_admin/pub" class="site-navi-tab">消息列表</a></p>
+            <a href="javascript:void(0);" src="<%=path %>/msg/list_page" class="site-navi-tab">消息列表</a></p>
         </div>
         <div title="系统管理" class="site_menu">
             <a href="javascript:void(0);" src="<%=path %>/admin/list_page" class="site-navi-tab">管理员列表</a></p>
