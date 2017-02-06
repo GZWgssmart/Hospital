@@ -5,6 +5,7 @@ import com.gs.common.Constants;
 import com.gs.common.bean.ControllerResult;
 import com.gs.common.bean.Pager;
 import com.gs.common.bean.Pager4EasyUI;
+import com.gs.common.util.DateUtil;
 import com.gs.common.util.EncryptUtil;
 import com.gs.common.util.PagerUtil;
 import com.gs.common.web.SessionUtil;
@@ -41,22 +42,17 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public ControllerResult login(User user, @Param("checkCode")String checkCode, HttpSession session) {
+    public ControllerResult login(User user, HttpSession session) {
         if (SessionUtil.isUser(session)) {
             return ControllerResult.getSuccessResult("登录成功");
         }
-        String codeInSession = (String) session.getAttribute(Constants.SESSION_CHECK_CODE);
-        if(checkCode != null && checkCode.equals(codeInSession)) {
-            user.setPwd(EncryptUtil.md5Encrypt(user.getPwd()));
-            User c = userService.query(user);
-            if (c != null) {
-
-                return ControllerResult.getSuccessResult("登录成功");
-            } else {
-                return ControllerResult.getFailResult("登录失败,请检查邮箱或密码");
-            }
+        user.setPwd(EncryptUtil.md5Encrypt(user.getPwd()));
+        User c = userService.query(user);
+        if (c != null) {
+            session.setAttribute(Constants.SESSION_CUSTOMER, c);
+            return ControllerResult.getSuccessResult("登录成功");
         } else {
-            return ControllerResult.getFailResult("验证码错误");
+            return ControllerResult.getFailResult("登录失败,请检查手机号或密码");
         }
     }
 
@@ -75,6 +71,7 @@ public class UserController {
     @RequestMapping(value = "reg", method = RequestMethod.POST)
     public String reg(User user, HttpSession session) {
         user.setPwd(EncryptUtil.md5Encrypt(user.getPwd()));
+        user.setCreatedTime(DateUtil.getDate());
         userService.insert(user);
         session.setAttribute(Constants.SESSION_CUSTOMER, user);
         return "redirect:home";
@@ -144,6 +141,7 @@ public class UserController {
         if (SessionUtil.isAdmin(session) || SessionUtil.isUser(session)) {
             logger.info("update user info");
             userService.update(user);
+            session.removeAttribute(Constants.SESSION_CUSTOMER);
             return ControllerResult.getSuccessResult("成功更新用户信息");
         } else {
             return ControllerResult.getNotLoginResult("登录信息无效，请重新登录");
@@ -161,13 +159,13 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "update_pwd", method = RequestMethod.POST)
-    public ControllerResult updatePwd(@Param("password")String password, @Param("newPwd")String newPwd, @Param("conPwd")String conPwd, HttpSession session) {
+    public ControllerResult updatePwd(@Param("pwd")String pwd, @Param("newPwd")String newPwd, @Param("conPwd")String conPwd, HttpSession session) {
         if (SessionUtil.isUser(session)) {
             User user = (User) session.getAttribute(Constants.SESSION_CUSTOMER);
-            if (user.getPwd().equals(EncryptUtil.md5Encrypt(password)) && newPwd != null && conPwd != null && newPwd.equals(conPwd)) {
+            if (user.getPwd().equals(EncryptUtil.md5Encrypt(pwd)) && newPwd != null && conPwd != null && newPwd.equals(conPwd)) {
                 user.setPwd(EncryptUtil.md5Encrypt(newPwd));
                 userService.updatePassword(user);
-                session.setAttribute(Constants.SESSION_CUSTOMER, user);
+                session.removeAttribute(Constants.SESSION_CUSTOMER);
                 return ControllerResult.getSuccessResult("更新用户密码成功");
             } else {
                 return ControllerResult.getFailResult("原密码错误,或新密码与确认密码不一致");
@@ -183,5 +181,22 @@ public class UserController {
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
+
+    @RequestMapping(value = "login_page", method = RequestMethod.GET)
+    public String toLoginPage(Model model) {
+        model.addAttribute(new User());
+        return "user/login";
+    }
+
+    @RequestMapping(value = "index_demo", method = RequestMethod.GET)
+    public String toIndexPage() {
+        return "user/index";
+    }
+
+    @RequestMapping(value = "system_msg", method = RequestMethod.GET)
+    public String systemMsgPage() {
+        return "user/systemMsg";
+    }
+
 
 }

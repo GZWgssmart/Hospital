@@ -5,7 +5,7 @@ package com.gs.common;
  */
 public class Constants {
 
-    public static final String SESSION_CUSTOMER = "customer";
+    public static final String SESSION_CUSTOMER = "user";
     public static final String SESSION_ADMIN = "admin";
     public static final String SESSION_CHECK_CODE = "checkCode";
 

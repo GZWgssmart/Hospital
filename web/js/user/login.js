@@ -9,12 +9,12 @@ function redirectIndex(needRedirect) {
 }
 
 function login() {
-    $.post(contextPath + "/customer/login",
+    $.post(contextPath + "/user/login",
         $("#login_form").serialize(),
         function (data) {
             var result = data.result;
             if(result == "success") {
-                window.location.href = contextPath + "/customer/home";
+                window.location.href = contextPath + "/user/home";
             } else {
                 $("#errMsg").html(data.message);
             }

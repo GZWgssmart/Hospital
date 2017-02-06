@@ -57,4 +57,8 @@ public class DateUtil {
         return pastTime(past.getTime(), Calendar.getInstance().getTimeInMillis());
     }
 
+    public static Date getDate() {
+        return Calendar.getInstance().getTime();
+    }
+
 }

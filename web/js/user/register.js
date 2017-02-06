@@ -16,3 +16,24 @@ function checkCode(){
         codenull.innerHTML = "";
     return true;
 }
+
+function register() {
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var pwd = document.getElementById("pwd").value;
+    var pwd1 = document.getElementById("pwd1").value;
+    if (name != "" && phone != "" && pwd != "" && pwd1 != "") {
+        if (!isNaN(phone) && phone.length == 11) {
+            if (pwd == pwd1) {
+                return  true;
+            } else {
+                $("#errMsg").html("两次密码不一致");
+            }
+        } else {
+            $("#errMsg").html("请输入正确的手机号");
+        }
+    } else {
+        $("#errMsg").html("用户名、手机号和密码都不能为空");
+    }
+    return false;
+}

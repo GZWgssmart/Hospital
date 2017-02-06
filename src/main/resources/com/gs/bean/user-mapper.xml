@@ -15,7 +15,7 @@
 
     <select id="query" parameterType="user" resultMap="userResultMap">
         <![CDATA[
-        select * from t_user where phone=#{phone} and password = #{password}
+        select * from t_user where phone=#{phone} and pwd = #{pwd}
         ]]>
     </select>
 
