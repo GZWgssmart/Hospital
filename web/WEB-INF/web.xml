@@ -20,6 +20,14 @@
         <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
     </listener>
 
+    <context-param>
+        <param-name>autoloadConfigLocation</param-name>
+        <param-value>/WEB-INF/config/autoload.properties</param-value>
+    </context-param>
+    <listener>
+        <listener-class>com.gs.common.web.AutoLoadListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

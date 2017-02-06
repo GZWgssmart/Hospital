@@ -66,7 +66,7 @@
                     <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
                     <ul class="nav1">
                         <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
-                        <li class="hvr-sweep-to-top"><a href="about.html">服务指南</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=服务指南">服务指南</a></li>
                         <li class="hvr-sweep-to-top"><a href="#services">健康百科</a></li>
                         <li class="hvr-sweep-to-top"><a href="#news" class="scroll">新闻动态</a></li>
                         <li class="hvr-sweep-to-top"><a href="typography.html">体检流程</a></li>

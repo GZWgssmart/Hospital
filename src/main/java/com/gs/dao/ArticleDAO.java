@@ -16,6 +16,8 @@ public interface ArticleDAO extends BaseDAO<Article, String> {
     public List<Article> queryByPagerAndCriteria(@Param("pager") Pager pager,
                                                  @Param("article") Article article);
 
+    public List<Article> queryByPagerTypeAndCriteria(@Param("pager") Pager pager, @Param("type") String type, @Param("article") Article article);
+
     public int countByCriteria(@Param("article") Article article);
 
 }

@@ -68,6 +68,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> queryByPagerTypeAndCriteria(Pager pager, String type, Article article) {
+        return articleDAO.queryByPagerTypeAndCriteria(pager, type, article);
+    }
+
+    @Override
     public int countByCriteria(Article article) {
         return articleDAO.countByCriteria(article);
     }

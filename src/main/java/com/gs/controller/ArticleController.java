@@ -65,12 +65,24 @@ public class ArticleController {
             logger.info("show article info by pager");
             int total = articleService.countByCriteria(article);
             Pager pager = PagerUtil.getPager(page, rows, total);
-            List<Article> departments = articleService.queryByPagerAndCriteria(pager, article);
-            return new Pager4EasyUI<Article>(pager.getTotalRecords(), departments);
+            List<Article> articles = articleService.queryByPagerAndCriteria(pager, article);
+            return new Pager4EasyUI<Article>(pager.getTotalRecords(), articles);
         } else {
             logger.info("can not show admin info by pager cause admin is not login");
             return null;
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
+    public ModelAndView searchPagerByType(@Param("page")String page, @Param("rows")String rows, @Param("type") String type, Article article, HttpSession session) {
+        logger.info("show article info by pager");
+        int total = articleService.countByCriteria(article);
+        Pager pager = PagerUtil.getPager(page, rows, total);
+        List<Article> articles = articleService.queryByPagerTypeAndCriteria(pager, type, article);
+        ModelAndView mav = new ModelAndView("index/article");
+        mav.addObject("articles", articles);
+        return mav;
     }
 
     @RequestMapping(value = "query/{id}", method = RequestMethod.GET)

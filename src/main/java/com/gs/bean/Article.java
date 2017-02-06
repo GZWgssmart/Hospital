@@ -13,6 +13,8 @@ public class Article {
     private String content;
     private Date pubTime;
 
+    private ArticleType articleType;
+
     public int getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class Article {
 
     public void setPubTime(Date pubTime) {
         this.pubTime = pubTime;
+    }
+
+    public ArticleType getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(ArticleType articleType) {
+        this.articleType = articleType;
     }
 }

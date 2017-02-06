@@ -4,7 +4,14 @@
 
     <resultMap id="articleResultMap" type="article">
         <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="author" column="author"/>
+        <result property="content" column="content" />
         <result property="pubTime" column="pub_time" />
+        <association property="articleType" javaType="com.gs.bean.ArticleType">
+            <id property="id" column="at_id"/>
+            <id property="name" column="at_name"/>
+        </association>
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="articleResultMap">
@@ -23,6 +30,17 @@
         <![CDATA[
         select * from t_article where 1 = 1
         ]]>
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="queryByPagerTypeAndCriteria" resultType="list" resultMap="articleResultMap">
+        <![CDATA[
+        select t.* from t_article t where 1 = 1
+        ]]>
+        <if test="type != null and type !=''">
+            and type_id = (select id from t_article_type where name = #{type})
+        </if>
         limit #{pager.beginIndex}, #{pager.pageSize}
 
     </select>
