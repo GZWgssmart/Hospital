@@ -5,6 +5,7 @@
     <resultMap id="newsResultMap" type="news">
         <id property="id" column="id" />
         <result property="pubTime" column="pub_time" />
+        <result property="abstracts" column="abstracts" />
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="newsResultMap">
@@ -14,6 +15,12 @@
     </select>
 
     <select id="query" parameterType="article" resultMap="newsResultMap">
+        <![CDATA[
+        select * from t_news
+        ]]>
+    </select>
+
+    <select id="queryAll" resultMap="newsResultMap">
         <![CDATA[
         select * from t_news
         ]]>
@@ -35,13 +42,13 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="article">
         <![CDATA[
-        insert into t_news(title, author, content, pub_time) values(#{title}, #{author}, #{content}, #{pubTime})
+        insert into t_news(title, author, content, abstracts, pub_time) values(#{title}, #{author}, #{content}, #{abstracts}, #{pubTime})
         ]]>
     </insert>
 
     <update id="update" keyProperty="id" parameterType="article">
         <![CDATA[
-        update t_news set title = #{title}, author = #{author}, content = #{content} where id = #{id}
+        update t_news set title = #{title}, author = #{author}, content = #{content}, abstracts=#{abstracts} where id = #{id}
         ]]>
     </update>
 

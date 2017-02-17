@@ -3,6 +3,7 @@ package com.gs.service;
 import com.gs.bean.Article;
 import com.gs.common.bean.Pager;
 import com.gs.dao.ArticleDAO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -75,5 +76,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int countByCriteria(Article article) {
         return articleDAO.countByCriteria(article);
+    }
+    @Override
+    public int countByTypeCriteria(@Param("article") Article article, @Param("type") String type) {
+        return articleDAO.countByTypeCriteria(article, type);
     }
 }

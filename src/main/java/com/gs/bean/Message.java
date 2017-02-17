@@ -10,6 +10,7 @@ public class Message {
     private int id;
     private String title;
     private String author;
+    private String abstracts;
     private String content;
     private Date sendTime;
 
@@ -51,5 +52,13 @@ public class Message {
 
     public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
+    }
+
+    public String getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(String abstracts) {
+        this.abstracts = abstracts;
     }
 }

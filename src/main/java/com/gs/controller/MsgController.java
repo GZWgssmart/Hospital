@@ -103,4 +103,33 @@ public class MsgController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
+    @RequestMapping(value = "msg_pager", method = RequestMethod.GET)
+    public ModelAndView msgPager(@Param("page")String page, @Param("rows")String rows, Message msg, HttpSession session) {
+        if (SessionUtil.isUser(session)) {
+            ModelAndView mav = new ModelAndView("user/systemMsg");
+            logger.info("user show msg info by pager");
+            int total = msgService.countByCriteria(msg);
+            Pager pager = PagerUtil.getPager(page, rows, total);
+            List<Message> departments = msgService.queryByPagerAndCriteria(pager, msg);
+            Pager4EasyUI<Message> messages = new Pager4EasyUI<Message>(pager.getTotalRecords(), departments);
+            mav.addObject("pager", pager);
+            mav.addObject("messages", messages);
+            return mav;
+        } else {
+            logger.info("can not show admin info by pager cause admin is not login");
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id, HttpSession session) {
+        if (SessionUtil.isUser(session)) {
+            ModelAndView mav = new ModelAndView("user/msgDetail");
+            Message msg = msgService.queryById(id);
+            mav.addObject("msg", msg);
+            return mav;
+        }
+        return new ModelAndView("redirect:/redirect_index");
+    }
+
 }

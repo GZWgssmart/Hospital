@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%
     String path = request.getContextPath();
 %>
@@ -51,6 +52,7 @@
         <div class="header-right">
             <ul>
                 <li><a href="<%=path %>/user/login_page">登入</a></li>
+                &nbsp;|&nbsp;
                 <li><a href="<%=path %>/user/reg_page">注册</a></li>
             </ul>
         </div>
@@ -67,23 +69,15 @@
                     <ul class="nav1">
                         <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
                         <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=服务指南">服务指南</a></li>
-                        <li class="hvr-sweep-to-top"><a href="#services">健康百科</a></li>
-                        <li class="hvr-sweep-to-top"><a href="#news" class="scroll">新闻动态</a></li>
-                        <li class="hvr-sweep-to-top"><a href="typography.html">体检流程</a></li>
-                        <li class="hvr-sweep-to-top"><a href="blog.html">体检套餐</a></li>
-                        <li class="hvr-sweep-to-top"><a href="contact.html">使用帮助</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=健康百科">健康百科</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=新闻动态">新闻动态</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=体检流程">体检流程</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=体检套餐">体检套餐</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=使用帮助">使用帮助</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- 控制导航菜单的JavaScript开始 -->
-        <script>
-            $("span.menu").click(function () {
-                $("ul.nav1").slideToggle(300, function () {
-                    // Animation complete.
-                });
-            });
-        </script>
         <!-- 控制导航菜单的JavaScript开始 -->
         <!-- 新闻开始 -->
         <div class="news" id="news">
@@ -92,41 +86,15 @@
                     <h3>新闻动态</h3>
                 </div>
                 <div class="news-section-grids">
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第一条新闻标题</a>
+                    <c:forEach items="${requestScope.newss}" var="news">
+                        <div class="col-md-4 news-section-grid">
+                            <div class="article_post">
+                                <a class="news-post" href="<%=path %>/news/queryById/${news.id}">${news.title}</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第二条新闻标题</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第三条新闻标题</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第四条新闻标题</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第五条新闻标题</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第六条新闻标题</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 news-section-grid">
-                        <div class="article_post">
-                            <a class="news-post" href="single.html">第七条新闻标题</a>
-                        </div>
-                    </div>
+                    </c:forEach>
+
+
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -146,12 +114,12 @@
             <div class="col-md-6 footer-grid-in">
                 <ul class="footer-nav">
                     <li><a class="scroll" href="#move-top">主页</a>|</li>
-                    <li><a href="about.html">服务指南</a>|</li>
-                    <li><a href="about.html">健康百科</a>|</li>
-                    <li><a class="scroll" href="#news">新闻动态</a>|</li>
-                    <li><a href="blog.html">体检流程</a>|</li>
-                    <li><a href="typography.html">体检套餐</a>|</li>
-                    <li><a href="contact.html">使用帮助</a></li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=服务指南">服务指南</a>|</li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=健康百科">健康百科</a>|</li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=新闻动态">新闻动态</a>|</li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=体检流程">体检流程</a>|</li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=体检套餐">体检套餐</a>|</li>
+                    <li><a href="<%=path %>/article/search_pager_type?type=使用帮助">使用帮助</a></li>
                 </ul>
                 <p class="footer-class">地址：赣州市&nbsp;&nbsp;技术支持:Wgssmart </p>
             </div>

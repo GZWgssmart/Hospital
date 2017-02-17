@@ -10,6 +10,7 @@ public class News {
     private String title;
     private String author;
     private String content;
+    private String abstracts;
     private Date pubTime;
 
     public int getId() {
@@ -50,5 +51,13 @@ public class News {
 
     public void setPubTime(Date pubTime) {
         this.pubTime = pubTime;
+    }
+
+    public String getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(String abstracts) {
+        this.abstracts = abstracts;
     }
 }

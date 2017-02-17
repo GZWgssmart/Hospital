@@ -103,4 +103,12 @@ public class NewsController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
+    @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id) {
+            ModelAndView mav = new ModelAndView("news/newsDetail");
+            News news = newsService.queryById(id);
+            mav.addObject("news", news);
+            return mav;
+    }
+
 }

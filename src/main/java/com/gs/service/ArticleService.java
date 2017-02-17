@@ -2,6 +2,7 @@ package com.gs.service;
 
 import com.gs.bean.Article;
 import com.gs.common.bean.Pager;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface ArticleService extends BaseService<Article, String> {
     public List<Article> queryByPagerTypeAndCriteria(Pager pager, String type, Article article);
 
     public int countByCriteria(Article article);
+
+    public int countByTypeCriteria(@Param("article") Article article, @Param("type") String type);
 
 }

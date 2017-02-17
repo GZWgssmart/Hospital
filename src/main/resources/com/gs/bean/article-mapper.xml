@@ -7,6 +7,7 @@
         <result property="title" column="title" />
         <result property="author" column="author"/>
         <result property="content" column="content" />
+        <result property="abstracts" column="abstracts" />
         <result property="pubTime" column="pub_time" />
         <association property="articleType" javaType="com.gs.bean.ArticleType">
             <id property="id" column="at_id"/>
@@ -51,15 +52,24 @@
         ]]>
     </select>
 
+    <select id="countByTypeCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_article where 1 = 1
+        ]]>
+        <if test="type != null and type != ''">
+            and type_id = (select id from t_article_type where name = #{type})
+        </if>
+    </select>
+
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="article">
         <![CDATA[
-        insert into t_article(title, author, content, pub_time) values(#{title}, #{author}, #{content}, #{pubTime})
+        insert into t_article(title, author, content, abstracts, pub_time) values(#{title}, #{author}, #{content}, #{abstracts}, #{pubTime})
         ]]>
     </insert>
 
     <update id="update" keyProperty="id" parameterType="article">
         <![CDATA[
-        update t_article set title = #{title}, author = #{author}, content = #{content} where id = #{id}
+        update t_article set title = #{title}, author = #{author}, content = #{content}, abstracts=#{abstracts} where id = #{id}
         ]]>
     </update>
 

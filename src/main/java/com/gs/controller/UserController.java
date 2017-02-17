@@ -193,10 +193,5 @@ public class UserController {
         return "user/index";
     }
 
-    @RequestMapping(value = "system_msg", method = RequestMethod.GET)
-    public String systemMsgPage() {
-        return "user/systemMsg";
-    }
-
 
 }

@@ -35,13 +35,13 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="article">
         <![CDATA[
-        insert into t_message(title, author, content, send_time) values(#{title}, #{author}, #{content}, #{sendTime})
+        insert into t_message(title, author, content, send_time, abstracts) values(#{title}, #{author}, #{content}, #{sendTime}, #{abstracts})
         ]]>
     </insert>
 
     <update id="update" keyProperty="id" parameterType="article">
         <![CDATA[
-        update t_message set title = #{title}, author = #{author}, content = #{content} where id = #{id}
+        update t_message set title = #{title}, author = #{author}, content = #{content}, abstracts=#{abstracts} where id = #{id}
         ]]>
     </update>
 

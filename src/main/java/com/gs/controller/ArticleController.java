@@ -1,6 +1,7 @@
 package com.gs.controller;
 
 import com.gs.bean.Article;
+import com.gs.bean.ArticleType;
 import com.gs.common.bean.ControllerResult;
 import com.gs.common.bean.Pager;
 import com.gs.common.bean.Pager4EasyUI;
@@ -60,7 +61,7 @@ public class ArticleController {
 
     @ResponseBody
     @RequestMapping(value = "search_pager", method = RequestMethod.GET)
-    public Pager4EasyUI<Article> searchPager(@Param("page")String page, @Param("rows")String rows, Article article, HttpSession session) {
+    public Pager4EasyUI<Article> searchPager(@Param("page") String page, @Param("rows") String rows, Article article, HttpSession session) {
         if (SessionUtil.isAdmin(session)) {
             logger.info("show article info by pager");
             int total = articleService.countByCriteria(article);
@@ -75,13 +76,21 @@ public class ArticleController {
 
     @ResponseBody
     @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
-    public ModelAndView searchPagerByType(@Param("page")String page, @Param("rows")String rows, @Param("type") String type, Article article, HttpSession session) {
+    public ModelAndView searchPagerByType(@Param("page") String page, @Param("rows") String rows, @Param("type") String type, Article article, HttpSession session) {
         logger.info("show article info by pager");
-        int total = articleService.countByCriteria(article);
+        ArticleType at = new ArticleType();
+        at.setName(type);
+        article.setArticleType(at);
+        int total = articleService.countByTypeCriteria(article, type);
         Pager pager = PagerUtil.getPager(page, rows, total);
         List<Article> articles = articleService.queryByPagerTypeAndCriteria(pager, type, article);
-        ModelAndView mav = new ModelAndView("index/article");
-        mav.addObject("articles", articles);
+        Pager4EasyUI<Article> pagers = new Pager4EasyUI<Article>(pager.getTotalRecords(), articles);
+        pagers.setRows(articles);
+        pagers.setTotal(total);
+        ModelAndView mav = new ModelAndView("index/articleList");
+        mav.addObject("pagers", pagers);
+        mav.addObject("articleType", type);
+        mav.addObject("pager", pager);
         return mav;
     }
 
@@ -113,6 +122,15 @@ public class ArticleController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
+    @RequestMapping(value = "queryById/{id}/{type}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id, @PathVariable("type") String type) {
+        ModelAndView mav = new ModelAndView("index/articleDetail");
+        Article article = articleService.queryById(id);
+        mav.addObject("article", article);
+        mav.addObject("articleType", type);
+        return mav;
     }
 
 }

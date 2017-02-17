@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
     String path = request.getContextPath();
 %>
@@ -35,28 +37,20 @@
         <div class="col-sm-12 animated fadeInRight">
             <div class="mail-box-header">
 
-                <form method="get" action="index.html" class="pull-right mail-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-sm" name="search" placeholder="搜索消息标题，正文等">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                搜索
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
                 <h2>
-                    系统消息 (2)
+                    系统消息 (${requestScope.messages.total})
+
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     <div class="btn-group pull-right">
-                        <button class="btn btn-white btn-sm"><img src="<%=path %>/images/left.png" /></i>
+                        <button class="btn btn-white btn-sm" onclick="previous('${requestScope.pager.pageNo}')"><img src="<%=path %>/images/left.png" alt="上一页" /></i>
                         </button>
-                        <button class="btn btn-white btn-sm"><img src="<%=path %>/images/right.png" /></i>
+                        <button class="btn btn-white btn-sm" onclick="next('${requestScope.pager.pageNo}', '${requestScope.messages.total}')"><img src="<%=path %>/images/right.png" alt="下一页" /></i>
                         </button>
 
                     </div>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="刷新消息列表"><img src="<%=path %>/images/refresh.png" /> 刷新</button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" onclick="refreshMsg('${requestScope.pager.pageNo}')" title="刷新消息列表"><img src="<%=path %>/images/refresh.png" /> 刷新</button>
 
 
                 </div>
@@ -77,18 +71,25 @@
                         <td class="text-right mail-date">发布的时间</td>
                     </tr>
 
-                    <tr class="read">
-                        <td class="check-mail">
-                            <input type="checkbox" class="i-checks">
-                        </td>
-                        <td class="mail-ontact"><a href="mail_detail.html">某某通知</a>
-                        </td>
-                        <td class="mail-subject"><a href="mail_detail.html">通知的详情</a>
-                        </td>
-                        <td class="">
-                        </td>
-                        <td class="text-right mail-date">2017-01-15</td>
-                    </tr>
+                    <c:forEach items="${requestScope.messages.rows}" var="msg" >
+                        <tr class="read">
+                            <td class="check-mail">
+                                <input type="checkbox" class="i-checks">
+                            </td>
+                            <td class="mail-ontact"><a href="<%=path %>/msg/queryById/${msg.id}">${msg.title}</a>
+                            </td>
+                            <td class="mail-subject"><a href="<%=path %>/msg/queryById/${msg.id}">${msg.abstracts}</a>
+                            </td>
+                            <td class="">
+                            </td>
+                            <td class="text-right mail-date">
+                                <fmt:formatDate value="${msg.sendTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+
                 </table>
 
 
@@ -117,6 +118,24 @@
             radioClass: 'iradio_square-green',
         });
     });
+
+    function refreshMsg(pageNo) {
+        window.location.href = "<%=path %>/msg/msg_pager?page=" + pageNo + "&rows=10";
+    }
+
+    function previous(pageNo) {
+        var pageNo1 = parseInt(pageNo) - 1;
+        window.location.href = "<%=path %>/msg/msg_pager?page=" + pageNo1 + "&rows=10";
+    }
+
+    function next(pageNo, total) {
+        var pageNo1 = parseInt(pageNo) + 1;
+        var maxPage = Math.ceil(parseInt(total) / 10);
+        if (pageNo1 > maxPage) {
+            pageNo1 = maxPage;
+        }
+        window.location.href = "<%=path %>/msg/msg_pager?page=" + pageNo1 + "&rows=10";
+    }
 </script>
 
 

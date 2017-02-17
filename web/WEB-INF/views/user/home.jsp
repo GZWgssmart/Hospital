@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="<%=path %>/user/system_msg">
+                    <a class="J_menuItem" href="<%=path %>/msg/msg_pager?page=1&rows=10">
                         <img src="<%=path %>/images/contact.png">
                         <span class="nav-label">系统消息</span>
                     </a>

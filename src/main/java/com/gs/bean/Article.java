@@ -11,6 +11,7 @@ public class Article {
     private String title;
     private String author;
     private String content;
+    private String abstracts;
     private Date pubTime;
 
     private ArticleType articleType;
@@ -61,5 +62,13 @@ public class Article {
 
     public void setArticleType(ArticleType articleType) {
         this.articleType = articleType;
+    }
+
+    public String getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(String abstracts) {
+        this.abstracts = abstracts;
     }
 }
