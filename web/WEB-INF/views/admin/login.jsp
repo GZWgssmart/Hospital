@@ -54,7 +54,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <button type="button" onclick="login();">登录</button>
+                            <button type="button" onclick="login();" class="easyui-linkbutton">登录</button>
                         </td>
                     </tr>
                 </table>

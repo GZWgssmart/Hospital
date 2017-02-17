@@ -49,6 +49,7 @@
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="title" width="150">标题</th>
         <th field="author" width="80">作者</th>
+        <th field="abstracts" width="150">内容</th>
         <th field="content" width="200">内容</th>
         <th field="sendTime" width="120" formatter="formatterDate">发布时间</th>
     </tr>
@@ -75,6 +76,11 @@
                            data-options="required:true,novalidate:true"/></td>
             </tr>
             <tr>
+                <td>消息摘要:</td>
+                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
+                           data-options="required:true,novalidate:true" style="height: 150px;"/></td>
+            </tr>
+            <tr>
                 <td>内容:</td>
                 <td><input type="text" name="content" class="easyui-validatebox easyui-textbox"
                            data-options="required:true,novalidate:true"/></td>
@@ -82,7 +88,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="add();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="add();">确认</button>
                 </td>
             </tr>
         </table>
@@ -104,6 +110,11 @@
                            data-options="required:true,novalidate:true"/></td>
             </tr>
             <tr>
+                <td>消息摘要:</td>
+                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
+                           data-options="required:true,novalidate:true" style="height: 150px;"/></td>
+            </tr>
+            <tr>
                 <td>内容:</td>
                 <td><input type="text" name="content" class="easyui-validatebox easyui-textbox"
                            data-options="required:true,novalidate:true"/></td>
@@ -111,7 +122,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="edit();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="edit();">确认</button>
                 </td>
             </tr>
         </table>

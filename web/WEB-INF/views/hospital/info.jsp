@@ -135,9 +135,9 @@
                 <td><form:input type="text" path="des" class="easyui-textbox" data-options="multiline:true,required:true,novalidate:true"/></td>
             </tr>
             <tr>
-                <td><button type="button" onclick="closeWin('editWin');">取消</button></td>
+                <td><button type="button" class="easyui-linkbutton" onclick="closeWin('editWin');">取消</button></td>
                 <td>
-                    <button type="button" onclick="edit('${requestScope.hospital.id }');">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="edit('${requestScope.hospital.id }');">确认</button>
                 </td>
             </tr>
         </table>

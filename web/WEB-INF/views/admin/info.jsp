@@ -81,9 +81,9 @@
                                 data-options="required:true,validType:'length[11,11]',novalidate:true"/></td>
             </tr>
             <tr>
-                <td><button type="button" onclick="closeWin('editWin');">取消</button></td>
+                <td><button type="button" class="easyui-linkbutton" onclick="closeWin('editWin');">取消</button></td>
                 <td>
-                    <button type="button" onclick="edit('${requestScope.admin.id }');">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="edit('${requestScope.admin.id }');">确认</button>
                 </td>
             </tr>
         </table>

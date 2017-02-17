@@ -53,7 +53,7 @@
         <tr>
             <td></td>
             <td>
-                <button type="button" onclick="updatePwd();">确认</button>
+                <button type="button" class="easyui-linkbutton" onclick="updatePwd();">确认</button>
             </td>
         </tr>
     </table>

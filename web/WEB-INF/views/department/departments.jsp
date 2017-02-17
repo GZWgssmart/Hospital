@@ -80,7 +80,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="add();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="add();">确认</button>
                 </td>
             </tr>
         </table>
@@ -108,7 +108,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="edit();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="edit();">确认</button>
                 </td>
             </tr>
         </table>

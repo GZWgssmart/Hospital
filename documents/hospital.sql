@@ -70,6 +70,7 @@ create table t_news(
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
   content text COMMENT '内容',
+  abstracts VARCHAR(200) COMMENT '摘要',
   pub_time datetime DEFAULT current_timestamp COMMENT '发布时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -82,6 +83,7 @@ create table t_message(
   title VARCHAR(50) COMMENT '标题',
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
+  abstracts VARCHAR(200) COMMENT '摘要',
   content text COMMENT '内容',
   send_time datetime DEFAULT current_timestamp COMMENT '发送时间',
   user_id int COMMENT '接收人编号'
@@ -112,6 +114,7 @@ create table t_article(
   admin_id int COMMENT '管理员编号',
   author VARCHAR(50) COMMENT '作者',
   content text COMMENT '内容',
+  abstracts VARCHAR(200) COMMENT '摘要',
   pub_time datetime DEFAULT current_timestamp COMMENT '发布时间'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 

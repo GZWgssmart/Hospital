@@ -111,7 +111,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="add();">确认</button>
+                    <button type="button" onclick="add();" class="easyui-linkbutton">确认</button>
                 </td>
             </tr>
         </table>
@@ -139,7 +139,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="edit();">确认</button>
+                    <button type="button" onclick="edit();" class="easyui-linkbutton">确认</button>
                 </td>
             </tr>
         </table>
@@ -159,7 +159,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" onclick="updatePwd();">确认</button>
+                    <button type="button" onclick="updatePwd();" class="easyui-linkbutton">确认</button>
                 </td>
             </tr>
         </table>
