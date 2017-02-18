@@ -54,7 +54,6 @@
         <fastjson-version>1.2.14</fastjson-version>
         <codec-version>1.9</codec-version>
         <io-version>2.4</io-version>
-        <ueditor-version>2.1.1</ueditor-version>
     </properties>
 
     <dependencies>
@@ -201,13 +200,6 @@
             <artifactId>commons-io</artifactId>
             <version>${io-version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.ui.ueditor</artifactId>
-            <version>${ueditor-version}</version>
-        </dependency>
-
 
     </dependencies>
 
