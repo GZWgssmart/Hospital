@@ -18,4 +18,6 @@ public interface ArticleTypeDAO extends BaseDAO<ArticleType, String> {
 
     public int countByCriteria(@Param("articleType") ArticleType articleType);
 
+    public List<ArticleType> queryByTitle();
+
 }

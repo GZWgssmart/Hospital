@@ -14,4 +14,6 @@ public interface ArticleTypeService extends BaseService<ArticleType, String> {
 
     public int countByCriteria(ArticleType articleType);
 
+    public List<ArticleType> queryByTitle();
+
 }

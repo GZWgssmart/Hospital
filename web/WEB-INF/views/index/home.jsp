@@ -68,12 +68,10 @@
                     <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
                     <ul class="nav1">
                         <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=服务指南">服务指南</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=健康百科">健康百科</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=新闻动态">新闻动态</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=体检流程">体检流程</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=体检套餐">体检套餐</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=使用帮助">使用帮助</a></li>
+                        <c:forEach items="${requestScope.articleTypes}" var="at">
+                            <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a></li>
+                        </c:forEach>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
                     </ul>
                 </div>
             </div>
@@ -114,12 +112,10 @@
             <div class="col-md-6 footer-grid-in">
                 <ul class="footer-nav">
                     <li><a class="scroll" href="#move-top">主页</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=服务指南">服务指南</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=健康百科">健康百科</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=新闻动态">新闻动态</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=体检流程">体检流程</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=体检套餐">体检套餐</a>|</li>
-                    <li><a href="<%=path %>/article/search_pager_type?type=使用帮助">使用帮助</a></li>
+                    <c:forEach items="${requestScope.articleTypes}" var="at">
+                        <li><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a>|</li>
+                    </c:forEach>
+                    <li><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
                 </ul>
                 <p class="footer-class">地址：赣州市&nbsp;&nbsp;技术支持:Wgssmart </p>
             </div>

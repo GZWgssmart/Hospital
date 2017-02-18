@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>客户列表-青岛宝瑞液晶综合信息屏媒体系统</title>
+    <title>查询所有用户信息</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="<%=path %>/js/jquery-easyui/themes/icon.css"/>

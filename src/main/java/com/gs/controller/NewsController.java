@@ -59,8 +59,24 @@ public class NewsController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
+    public ModelAndView searchPagerByType(@Param("page") String page, @Param("rows") String rows, News news, HttpSession session) {
+        logger.info("show news info by pager");
+        int total = newsService.countByCriteria(news);
+        Pager pager = PagerUtil.getPager(page, rows, total);
+        List<News> newses = newsService.queryByPagerAndCriteria(pager, news);
+        Pager4EasyUI<News> pagers = new Pager4EasyUI<News>(pager.getTotalRecords(), newses);
+        pagers.setRows(newses);
+        pagers.setTotal(total);
+        ModelAndView mav = new ModelAndView("news/newsList");
+        mav.addObject("pagers", pagers);
+        mav.addObject("pager", pager);
+        return mav;
+    }
+
+    @ResponseBody
     @RequestMapping(value = "search_pager", method = RequestMethod.GET)
-    public Pager4EasyUI<News> searchPager(@Param("page")String page, @Param("rows")String rows, News news, HttpSession session) {
+    public Pager4EasyUI<News> searchPager(@Param("page") String page, @Param("rows") String rows, News news, HttpSession session) {
         if (SessionUtil.isAdmin(session)) {
             logger.info("show news info by pager");
             int total = newsService.countByCriteria(news);
@@ -105,10 +121,10 @@ public class NewsController {
 
     @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
     public ModelAndView userQueryById(@PathVariable("id") String id) {
-            ModelAndView mav = new ModelAndView("news/newsDetail");
-            News news = newsService.queryById(id);
-            mav.addObject("news", news);
-            return mav;
+        ModelAndView mav = new ModelAndView("news/newsDetail");
+        News news = newsService.queryById(id);
+        mav.addObject("news", news);
+        return mav;
     }
 
 }

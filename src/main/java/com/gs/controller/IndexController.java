@@ -1,6 +1,8 @@
 package com.gs.controller;
 
+import com.gs.bean.ArticleType;
 import com.gs.bean.News;
+import com.gs.service.ArticleTypeService;
 import com.gs.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +23,16 @@ public class IndexController {
     @Resource
     private NewsService newsService;
 
+    @Resource
+    private ArticleTypeService ats;
+
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("index/home");
-        List<News> newss = newsService.queryAll();
+        List<News> newss = newsService.queryByTitle();
+        List<ArticleType> articleTypes = ats.queryByTitle();
         mav.addObject("newss", newss);
+        mav.addObject("articleTypes", articleTypes);
         return mav;
     }
 

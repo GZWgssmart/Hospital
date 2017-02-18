@@ -71,4 +71,8 @@ public class NewsServiceImpl implements NewsService {
     public int countByCriteria(News news) {
         return newsDAO.countByCriteria(news);
     }
+
+    public List<News> queryByTitle() {
+        return newsDAO.queryByTitle();
+    }
 }

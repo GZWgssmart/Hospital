@@ -18,4 +18,6 @@ public interface NewsDAO extends BaseDAO<News, String> {
 
     public int countByCriteria(@Param("news") News news);
 
+    public List<News> queryByTitle();
+
 }

@@ -87,7 +87,7 @@ public class ArticleController {
         Pager4EasyUI<Article> pagers = new Pager4EasyUI<Article>(pager.getTotalRecords(), articles);
         pagers.setRows(articles);
         pagers.setTotal(total);
-        ModelAndView mav = new ModelAndView("index/articleList");
+        ModelAndView mav = new ModelAndView("article/articleList");
         mav.addObject("pagers", pagers);
         mav.addObject("articleType", type);
         mav.addObject("pager", pager);
@@ -126,7 +126,7 @@ public class ArticleController {
 
     @RequestMapping(value = "queryById/{id}/{type}", method = RequestMethod.GET)
     public ModelAndView userQueryById(@PathVariable("id") String id, @PathVariable("type") String type) {
-        ModelAndView mav = new ModelAndView("index/articleDetail");
+        ModelAndView mav = new ModelAndView("article/articleDetail");
         Article article = articleService.queryById(id);
         mav.addObject("article", article);
         mav.addObject("articleType", type);

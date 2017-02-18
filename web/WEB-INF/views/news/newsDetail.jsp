@@ -48,9 +48,13 @@
                         ${requestScope.news.content}
 
                     </p>
-                    <p style="text-align: right">
-                        <fmt:formatDate value="${requestScope.news.pubTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                    <p style="text-align: right" id="date">
+                        <fmt:formatDate value="${requestScope.news.pubTime}" pattern="yyyy-MM-dd HH:DD:ss"></fmt:formatDate>
                     </p>
+                    <div class="mail-body text-right tooltip-demo">
+                        <a class="btn btn-sm btn-white" href="<%=path %>/news/search_pager_type"><img
+                                src="<%=path %>/images/left.png"/> 返回列表</a>
+                    </div>
 
 
                 </div>

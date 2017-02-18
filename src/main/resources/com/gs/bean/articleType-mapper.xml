@@ -12,6 +12,12 @@
         ]]>
     </select>
 
+    <select id="queryByTitle"  resultType="list" resultMap="atResultMap">
+        <![CDATA[
+        select * from t_article_type limit 5
+        ]]>
+    </select>
+
     <select id="query" parameterType="articleType" resultMap="atResultMap">
         <![CDATA[
         select * from t_article_type

@@ -14,6 +14,12 @@
         ]]>
     </select>
 
+    <select id="queryByTitle" resultType="list" resultMap="newsResultMap">
+        <![CDATA[
+        select * from t_news limit 9
+        ]]>
+    </select>
+
     <select id="query" parameterType="article" resultMap="newsResultMap">
         <![CDATA[
         select * from t_news

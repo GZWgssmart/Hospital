@@ -14,4 +14,6 @@ public interface NewsService extends BaseService<News, String> {
 
     public int countByCriteria(News news);
 
+    public List<News> queryByTitle();
+
 }

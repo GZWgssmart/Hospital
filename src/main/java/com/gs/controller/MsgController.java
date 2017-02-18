@@ -106,7 +106,7 @@ public class MsgController {
     @RequestMapping(value = "msg_pager", method = RequestMethod.GET)
     public ModelAndView msgPager(@Param("page")String page, @Param("rows")String rows, Message msg, HttpSession session) {
         if (SessionUtil.isUser(session)) {
-            ModelAndView mav = new ModelAndView("user/systemMsg");
+            ModelAndView mav = new ModelAndView("message/systemMsg");
             logger.info("user show msg info by pager");
             int total = msgService.countByCriteria(msg);
             Pager pager = PagerUtil.getPager(page, rows, total);
@@ -124,7 +124,7 @@ public class MsgController {
     @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
     public ModelAndView userQueryById(@PathVariable("id") String id, HttpSession session) {
         if (SessionUtil.isUser(session)) {
-            ModelAndView mav = new ModelAndView("user/msgDetail");
+            ModelAndView mav = new ModelAndView("message/msgDetail");
             Message msg = msgService.queryById(id);
             mav.addObject("msg", msg);
             return mav;

@@ -71,4 +71,8 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     public int countByCriteria(ArticleType articleType) {
         return articleTypeDAO.countByCriteria(articleType);
     }
+
+    public List<ArticleType> queryByTitle() {
+        return articleTypeDAO.queryByTitle();
+    }
 }
