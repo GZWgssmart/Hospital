@@ -67,7 +67,7 @@
        onclick="showEdit();">修改</a>
 </div>
 
-<div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加新闻动态',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
+<div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加新闻动态',resizable:false,mode:true,closed:true" style="width:700px; height:500px">
     <form:form id="addForm" modelAttribute="news">
         <table>
             <tr>
@@ -75,21 +75,21 @@
             </tr>
             <tr>
                 <td><input type="text" name="title" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>作者:</td>
             </tr>
             <tr>
                 <td><input type="text" name="author" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>新闻摘要:</td>
             </tr>
             <tr>
-                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true" style="height: 100px;"/></td>
+                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
                 <td>内容:</td>
@@ -109,7 +109,7 @@
     </form:form>
 </div>
 
-<div class="easyui-window site_win_small input_big" id="editWin" data-options="title:'修改文章类型',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
+<div class="easyui-window site_win_small input_big" id="editWin" data-options="title:'修改新闻动态',resizable:false,mode:true,closed:true" style="width:700px; height: 500px">
     <form id="editForm" modelAttribute="news">
         <input type="hidden" name="id" />
         <table>
@@ -131,8 +131,9 @@
                 <td>新闻摘要:</td>
             </tr>
             <tr>
-                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true" style="height: 100px; width: 600px;"/></td>
+                <td>
+                    <input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
                 <td>内容:</td>
@@ -145,7 +146,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="easyui-linkbutton" onclick="add();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="edit();">确认</button>
                 </td>
             </tr>
         </table>
@@ -153,11 +154,20 @@
 </div>
 
 </body>
+<script src="<%=path %>/js/window.js"></script>
 <script type="text/javascript">
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('addEditor');
     var ue1 = UE.getEditor('editEditor');
+
+    ue.ready(function() {
+        ue.setContent("");
+    });
+
+    $(function() {
+        setWin();
+    });
 
 </script>
 </html>

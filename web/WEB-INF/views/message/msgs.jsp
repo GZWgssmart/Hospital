@@ -53,7 +53,7 @@
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="title" width="150">标题</th>
         <th field="author" width="80">作者</th>
-        <th field="abstracts" width="150">内容</th>
+        <th field="abstracts" width="150">摘要</th>
         <th field="content" width="200">内容</th>
         <th field="sendTime" width="120" formatter="formatterDate">发布时间</th>
     </tr>
@@ -90,21 +90,21 @@
             </tr>
             <tr>
 
-                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true" style="height: 150px; width: 600px;"/></td>
+                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
                 <td>内容:</td>
             </tr>
             <tr>
 
-                <td
+                <td>
                 <script id="addEditor" type="text/plain" name="content" style="width: 600px; height: 200px;"></script>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="easyui-linkbutton" onclick="edit();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="add();">确认</button>
                 </td>
             </tr>
         </table>
@@ -136,15 +136,15 @@
             </tr>
             <tr>
 
-                <td><input type="text" name="abstracts" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true" style="height: 150px; width: 600px;"/></td>
+                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
                 <td>内容:</td>
             </tr>
             <tr>
 
-                <td
+                <td>
                     <script id="editEditor" type="text/plain" name="content" style="width: 600px; height: 200px;"></script>
                 </td>
             </tr>
@@ -158,11 +158,20 @@
 </div>
 
 </body>
+<script src="<%=path %>/js/window.js"></script>
 <script type="text/javascript">
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('addEditor');
     var ue1 = UE.getEditor('editEditor');
+
+    ue.ready(function() {
+        ue.setContent("");
+    });
+
+    $(function() {
+        setWin();
+    });
 
 </script>
 </html>

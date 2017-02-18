@@ -91,7 +91,8 @@
             <tr>
 
                 <td>
-                    <input type="text" style="width: 600px;" name="abstracts" class="easyui-validatebox easyui-textbox" data-options="required:true,novalidate:true" style="height: 100px; width: 600px;"/>
+                    <input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/>
                 </td>
             </tr>
             <tr>
@@ -105,7 +106,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="easyui-linkbutton" onclick="edit();">确认</button>
+                    <button type="button" class="easyui-linkbutton" onclick="add();">确认</button>
                 </td>
             </tr>
         </table>
@@ -128,8 +129,8 @@
                 <td>作者:</td>
             </tr>
             <tr>
-                <td><input type="text" name="author" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
+                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
                 <td>文章摘要</td>
@@ -137,7 +138,7 @@
             <tr>
 
                 <td>
-                    <input type="text" style="width: 600px;" name="abstracts" class="easyui-validatebox easyui-textbox" data-options="required:true,novalidate:true" style="height: 100px; width: 600px;"/>
+                    <input type="text" style="width: 600px;" name="abstracts" class="easyui-textbox easyui-textbox" data-options="required:true,novalidate:true" style="height: 100px; width: 600px;"/>
                 </td>
             </tr>
             <tr>
@@ -159,11 +160,19 @@
 </div>
 
 </body>
+<script src="<%=path %>/js/window.js"></script>
 <script type="text/javascript">
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('addEditor');
     var ue1 = UE.getEditor('editEditor');
 
+    ue.ready(function() {
+        ue.setContent("");
+    });
+
+    $(function() {
+        setWin();
+    });
 </script>
 </html>

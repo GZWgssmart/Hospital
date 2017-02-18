@@ -1,9 +1,9 @@
 var contextPath = '';
 
-$(function() {
+$(function () {
     setPagination("#list");
     $("#statusSearch").combobox({
-        onChange:function(n, o){
+        onChange: function (n, o) {
             if (n != o) {
                 doSearch();
             }
@@ -22,7 +22,7 @@ function add() {
                     dataGridReload("list");
                     $("#addForm").form("clear");
                 } else if (data.result == 'notLogin') {
-                    $.messager.alert("提示", data.message, "info", function() {
+                    $.messager.alert("提示", data.message, "info", function () {
                         toAdminLoginPage();
                     });
                 } else {
@@ -37,7 +37,7 @@ function showEdit() {
     var row = selectedRow("list");
     if (row) {
         $("#editForm").form("load", row);
-        UE.getEditor("editEditor").setContent(row.content,false);
+        UE.getEditor("editEditor").setContent(row.content, false);
         openWin("editWin");
     } else {
         $.messager.alert("提示", "请选择需要修改的医生信息", "info");
@@ -56,7 +56,7 @@ function edit() {
                         dataGridReload("list");
                     });
                 } else if (data.result == 'notLogin') {
-                    $.messager.alert("提示", data.message, "info", function() {
+                    $.messager.alert("提示", data.message, "info", function () {
                         toAdminLoginPage();
                     });
                 } else {
@@ -69,9 +69,9 @@ function edit() {
 
 function doSearch() {
     $("#list").datagrid({
-        url:contextPath + '/news/search_pager',
-        pageSize:20,
-        queryParams:getQueryParams("list", "searchForm")
+        url: contextPath + '/news/search_pager',
+        pageSize: 20,
+        queryParams: getQueryParams("list", "searchForm")
     });
     setPagination("#list");
 }
@@ -79,9 +79,9 @@ function doSearch() {
 function searchAll() {
     $("#searchForm").form("clear");
     $("#list").datagrid({
-        url:contextPath + '/news/search_pager',
-        pageSize:20,
-        queryParams:getQueryParams("list", "searchForm")
+        url: contextPath + '/news/search_pager',
+        pageSize: 20,
+        queryParams: getQueryParams("list", "searchForm")
     });
     setPagination("#list");
 }
