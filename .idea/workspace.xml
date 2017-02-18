@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ab6adc1-a6b5-4940-9447-48cfbd7b5f3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/news/newsList.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/index/article.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/news/newsDetail.jsp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/index/articleDetail.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/article/articleDetail.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/index/articleList.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/article/articleList.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/user/msgDetail.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/message/msgDetail.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/user/systemMsg.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/message/systemMsg.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/controller/ArticleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/controller/ArticleController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/controller/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/controller/MsgController.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/controller/MsgController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/controller/NewsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/controller/NewsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/dao/ArticleTypeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/dao/ArticleTypeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/dao/NewsDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/dao/NewsDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/service/ArticleTypeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/service/ArticleTypeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/service/ArticleTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/service/ArticleTypeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/service/NewsService.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/service/NewsService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gs/service/NewsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gs/service/NewsServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gs/bean/articleType-mapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gs/bean/articleType-mapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gs/bean/news-mapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gs/bean/news-mapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/index/home.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/index/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/user/users.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user/users.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gs/bean/user-mapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gs/bean/user-mapper.xml" />
     </list>
     <ignored path="Hospital.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,19 +36,48 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1273">
+            <state relative-caret-position="-1159">
               <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="users.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/users.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-408">
               <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/dao/UserDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user-mapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/com/gs/bean/user-mapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+              <folding>
+                <marker date="1487402140508" expanded="true" signature="461:496" ph="select * fro... t_user" />
+                <marker date="1487402140508" expanded="true" signature="621:679" ph="select * fro... t_user" />
+                <marker date="1487402140508" expanded="true" signature="804:824" ph="select * fro... t_user" />
+                <marker date="1487402140508" expanded="true" signature="994:1047" ph="select * fro... t_user" />
+                <marker date="1487402140508" expanded="true" signature="1187:1579" ph="select * fro... t_user" />
+                <marker date="1487402140508" expanded="true" signature="2112:2212" ph="insert into t_user... " />
+                <marker date="1487402140508" expanded="true" signature="2329:2396" ph="update t_use... " />
+                <marker date="1487402140508" expanded="true" signature="2521:2568" ph="update t_use... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,7 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/gs/dao/BaseDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gs/dao/DepartmentDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gs/dao/DoctorDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gs/dao/HospitalDAO.java" />
@@ -146,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gs/controller/MsgController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/message/systemMsg.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/user/users.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/gs/bean/user-mapper.xml" />
       </list>
     </option>
   </component>
@@ -512,28 +520,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="news" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hospital" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hospital" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="msg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1260,12 +1246,12 @@
       <workItem from="1487057270794" duration="270000" />
       <workItem from="1487203409624" duration="6812000" />
       <workItem from="1487382698037" duration="7307000" />
-      <workItem from="1487395818188" duration="5775000" />
+      <workItem from="1487395818188" duration="6283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77531000" />
+    <option name="totallyTimeSpent" value="78039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1357,14 +1343,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/common/util/PagerUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c908a375/d487e7c3-977e-48bc-b1b4-8fec950084e4/hospital.t_article_type" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/common/util/SingletonConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1754,19 +1732,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1273">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/users.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-408">
           <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1159">
+          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gs/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gs/bean/user-mapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+          <folding>
+            <marker date="1487402140508" expanded="true" signature="461:496" ph="select * fro... t_user" />
+            <marker date="1487402140508" expanded="true" signature="621:679" ph="select * fro... t_user" />
+            <marker date="1487402140508" expanded="true" signature="804:824" ph="select * fro... t_user" />
+            <marker date="1487402140508" expanded="true" signature="994:1047" ph="select * fro... t_user" />
+            <marker date="1487402140508" expanded="true" signature="1187:1579" ph="select * fro... t_user" />
+            <marker date="1487402140508" expanded="true" signature="2112:2212" ph="insert into t_user... " />
+            <marker date="1487402140508" expanded="true" signature="2329:2396" ph="update t_use... " />
+            <marker date="1487402140508" expanded="true" signature="2521:2568" ph="update t_use... " />
+          </folding>
         </state>
       </provider>
     </entry>

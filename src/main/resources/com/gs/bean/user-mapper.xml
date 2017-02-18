@@ -35,11 +35,11 @@
         <![CDATA[
         select * from t_user where 1 = 1
         ]]>
-        <if test="customer.name != null and customer.name !=''">
-            and name like concat('%', #{customer.name}, '%')
+        <if test="user.name != null and user.name !=''">
+            and name like concat('%', #{user.name}, '%')
         </if>
-        <if test="customer.phone != null and customer.phone !=''">
-            and phone like concat('%', #{customer.phone}, '%')
+        <if test="user.phone != null and user.phone !=''">
+            and phone like concat('%', #{user.phone}, '%')
         </if>
         order by created_time desc
         limit #{pager.beginIndex}, #{pager.pageSize}
@@ -49,11 +49,11 @@
         <![CDATA[
         select count(1) from t_user where 1 = 1
         ]]>
-        <if test="customer.name != null and customer.name !=''">
-            and name like concat('%', #{customer.name}, '%')
+        <if test="user.name != null and user.name !=''">
+            and name like concat('%', #{user.name}, '%')
         </if>
-        <if test="customer.phone != null and customer.phone !=''">
-            and phone like concat('%', #{customer.phone}, '%')
+        <if test="user.phone != null and user.phone !=''">
+            and phone like concat('%', #{user.phone}, '%')
         </if>
     </select>
 
