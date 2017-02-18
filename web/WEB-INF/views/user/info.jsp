@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
     String path = request.getContextPath();
 %>
@@ -55,7 +56,8 @@
                             注册时间：
                         </h5>
                         <p style="padding-left: 20px;">
-                            ${sessionScope.user.createdTime }
+                            <fmt:formatDate value="${sessionScope.user.createdTime }" var="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+
                         </p>
 
                         <div class="user-button">
@@ -97,7 +99,9 @@
                             </div>
                             <div class="form-group">
                                 <label>注册时间：</label>
-                                <p class="form-control-static">${sessionScope.user.createdTime }</p>
+                                <p class="form-control-static">
+                                    <fmt:formatDate value="${sessionScope.user.createdTime }" var="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                                </p>
                             </div>
                             <div>
                                 <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="button" onclick="update()"><strong>修改</strong>
