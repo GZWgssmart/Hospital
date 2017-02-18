@@ -37,6 +37,7 @@ function showEdit() {
     var row = selectedRow("list");
     if (row) {
         $("#editForm").form("load", row);
+        UE.getEditor("editEditor").setContent(row.content,false);
         openWin("editWin");
     } else {
         $.messager.alert("提示", "请选择需要修改的医生信息", "info");

@@ -11,13 +11,10 @@ public class CommonsMultipartResolver extends org.springframework.web.multipart.
         @Override
         public boolean isMultipart(javax.servlet.http.HttpServletRequest request) {
             String uri = request.getRequestURI();
-            System.out.println(uri);
             //过滤使用百度EmEditor的URI
             if (uri.indexOf("ueditor/core") > 0) {
-                System.out.println("commonsMultipartResolver 放行");
                 return false;
             }
-            System.out.println("commonsMultipartResolver 拦截");
             return super.isMultipart(request);
         }
 }
