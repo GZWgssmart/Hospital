@@ -48,9 +48,9 @@
     <tr>
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="email" width="150">邮箱</th>
-        <th field="name" width="60">姓名</th>
-        <th field="phone" width="80">手机号</th>
-        <th field="createTime" width="120" formatter="formatterDate">创建时间</th>
+        <th field="name" width="100">姓名</th>
+        <th field="phone" width="120">手机号</th>
+        <th field="createTime" width="150" formatter="formatterDate">创建时间</th>
     </tr>
     </thead>
 </table>

@@ -92,7 +92,7 @@
             </tr>
             <tr>
 
-                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
+                <td><input name="abstracts" class="easyui-textbox"
                            data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
             </tr>
             <tr>
@@ -130,7 +130,7 @@
             </tr>
             <tr>
 
-                <td><input type="text" name="author" class="easyui-validatebox easyui-textbox"
+                <td><input type="text" name="author" class="easyui-validatebox"
                            data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>

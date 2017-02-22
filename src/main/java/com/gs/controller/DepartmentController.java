@@ -1,6 +1,8 @@
 package com.gs.controller;
 
+import com.gs.bean.ArticleType;
 import com.gs.bean.Department;
+import com.gs.common.bean.ComboBox4EasyUI;
 import com.gs.common.bean.ControllerResult;
 import com.gs.common.bean.Pager;
 import com.gs.common.bean.Pager4EasyUI;
@@ -20,6 +22,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -99,6 +102,20 @@ public class DepartmentController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
+    @ResponseBody
+    @RequestMapping("all")
+    public List<ComboBox4EasyUI> queryAll() {
+        List<Department> depts = departmentService.queryAll();
+        List<ComboBox4EasyUI> cobox = new ArrayList<ComboBox4EasyUI>();
+        for(Department dept : depts) {
+            ComboBox4EasyUI co = new ComboBox4EasyUI();
+            co.setId(String.valueOf(dept.getId()));
+            co.setText(dept.getName());
+            cobox.add(co);
+        }
+        return cobox;
     }
 
 }

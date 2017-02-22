@@ -25,6 +25,12 @@
     <script src="<%=path %>/js/site_easyui.js"></script>
 
     <script src="<%=path %>/js/doctor/doctor.js"></script>
+
+    <script type="text/javascript">
+        function dept(value) {
+            return value.name;
+        }
+    </script>
 </head>
 <body>
 <table id="list" class="easyui-datagrid" toolbar="#tb" style="height:100%;"
@@ -49,7 +55,7 @@
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="name" width="150">名称</th>
         <th field="major" width="100">专长</th>
-        <th field="dept" width="80">科室</th>
+        <th field="dept" width="80" formatter="dept">科室</th>
         <th field="des" width="200">描述</th>
     </tr>
     </thead>
@@ -75,8 +81,19 @@
                            data-options="required:true,novalidate:true"/></td>
             </tr>
             <tr>
+                <td>科室:</td>
+                <td>
+                    <select id="addDeptId" name="dept.id" class="easyui-validatebox easyui-combobox"
+                            data-options="url:'<%=path %>/dept/all',method:'get',valueField:'id',textField:'text',
+                           panelHeight:'auto',editable:false,required:true,novalidate:true"></select>
+                </td>
+            </tr>
+            <tr>
                 <td>描述:</td>
-                <td><input type="text" name="des" class="easyui-textbox" data-options="multiline:true,required:true,novalidate:true"/></td>
+                <td>
+                    <input name="des" class="easyui-textbox"
+                           data-options="multiline:true,required:true,novalidate:true" style="height: 100px;"/>
+                </td>
             </tr>
             <tr>
                 <td></td>
@@ -103,8 +120,16 @@
                            data-options="required:true,novalidate:true"/></td>
             </tr>
             <tr>
+                <td>科室:</td>
+                <td>
+                    <select id="editDeptId" name="dept.id" class="easyui-validatebox easyui-combobox"
+                            data-options="editable:false,required:true,novalidate:true"></select>
+                </td>
+            </tr>
+            <tr>
                 <td>描述:</td>
-                <td><input type="text" name="des" class="easyui-textbox" data-options="multiline:true,required:true,novalidate:true"/></td>
+                <td><input name="des" class="easyui-textbox"
+                           data-options="multiline:true,required:true,novalidate:true" style="height: 100px;"/></td>
             </tr>
             <tr>
                 <td></td>

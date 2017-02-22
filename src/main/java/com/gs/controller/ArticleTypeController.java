@@ -106,7 +106,7 @@ public class ArticleTypeController {
 
     @ResponseBody
     @RequestMapping("all_type")
-    public List<ComboBox4EasyUI> queryAll(ArticleType articleType) {
+    public List<ComboBox4EasyUI> queryAll() {
         List<ArticleType> ats = articleTypeService.queryAll();
         List<ComboBox4EasyUI> cobox = new ArrayList<ComboBox4EasyUI>();
         for(ArticleType at : ats) {

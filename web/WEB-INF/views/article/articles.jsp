@@ -110,7 +110,7 @@
             <tr>
 
                 <td>
-                    <input name="abstracts" class="easyui-textbox easyui-textbox"
+                    <input name="abstracts" class="easyui-textbox"
                            data-options="multiline:true" style="height: 100px; width: 600px;"/>
                 </td>
             </tr>
@@ -167,7 +167,7 @@
             <tr>
 
                 <td>
-                    <input name="abstracts" class="easyui-textbox easyui-textbox"
+                    <input name="abstracts" class="easyui-textbox"
                            data-options="multiline:true" style="height: 100px; width: 600px;"/>
                 </td>
             </tr>

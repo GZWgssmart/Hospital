@@ -18,6 +18,12 @@
         ]]>
     </select>
 
+    <select id="queryAll" resultMap="deptResultMap">
+        <![CDATA[
+        select * from t_department
+        ]]>
+    </select>
+
     <select id="queryByPagerAndCriteria" resultType="list" resultMap="deptResultMap">
         <![CDATA[
         select * from t_department where 1 = 1

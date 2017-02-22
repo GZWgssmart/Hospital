@@ -36,6 +36,14 @@ function add() {
 function showEdit() {
     var row = selectedRow("list");
     if (row) {
+        $("#editDeptId").combobox({
+            url: '/dept/all',
+            method:'get',
+            valueField:'id',
+            textField:'text',
+            panelHeight:'auto'
+        });
+        $('#editDeptId').combobox('select', row.dept.id);
         $("#editForm").form("load", row);
         openWin("editWin");
     } else {

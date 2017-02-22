@@ -48,8 +48,8 @@
     <tr>
         <th field="id" checkbox="true" width="50">用户ID</th>
         <th field="name" width="100">姓名</th>
-        <th field="phone" width="80">手机号</th>
-        <th field="createdTime" width="120" formatter="formatterDate">注册时间</th>
+        <th field="phone" width="120">手机号</th>
+        <th field="createdTime" width="150" formatter="formatterDate">注册时间</th>
     </tr>
     </thead>
 </table>

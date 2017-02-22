@@ -4,6 +4,15 @@
 
     <resultMap id="docResultMap" type="doctor">
         <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="major" column="major" />
+        <result property="des" column="des" />
+        <association property="dept" javaType="com.gs.bean.Department">
+            <id property="id" column="d_id"/>
+            <result property="name" column="d_name"/>
+            <result property="address" column="d_address"/>
+            <result property="des" column="d_des"/>
+        </association>
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="docResultMap">
@@ -20,7 +29,7 @@
 
     <select id="queryByPagerAndCriteria" resultType="list" resultMap="docResultMap">
         <![CDATA[
-        select * from t_doctor where 1 = 1
+        select doc.*, d.id as d_id, d.name as d_name, d.address as d_address, d.des as d_des from t_doctor doc, t_department d where 1 = 1 and doc.dept_id = d.id
         ]]>
         limit #{pager.beginIndex}, #{pager.pageSize}
 
@@ -34,13 +43,13 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="dept">
         <![CDATA[
-        insert into t_doctor(name, major, des) values(#{name}, #{major}, #{des})
+        insert into t_doctor(name, dept_id, major, des) values(#{name}, #{dept.id}, #{major}, #{des})
         ]]>
     </insert>
 
     <update id="update" keyProperty="id" parameterType="dept">
         <![CDATA[
-        update t_doctor set name = #{name}, major = #{major}, des = #{des} where id = #{id}
+        update t_doctor set name = #{name}, dept_id=#{dept.id}, major = #{major}, des = #{des} where id = #{id}
         ]]>
     </update>
 

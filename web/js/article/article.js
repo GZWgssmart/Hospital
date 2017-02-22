@@ -37,7 +37,7 @@ function showEdit() {
     var row = selectedRow("list");
     if (row) {
         $("#editTypeId").combobox({
-            url: '/articleType/all_type/',
+            url: '/articleType/all_type',
             method:'get',
             valueField:'id',
             textField:'text',
