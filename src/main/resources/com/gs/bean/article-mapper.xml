@@ -29,7 +29,7 @@
 
     <select id="queryByPagerAndCriteria" resultType="list" resultMap="articleResultMap">
         <![CDATA[
-        select * from t_article where 1 = 1
+        select t.*, tat.id as at_id, tat.name as at_name from t_article t, t_article_type tat where 1 = 1 and t.type_id = tat.id
         ]]>
         limit #{pager.beginIndex}, #{pager.pageSize}
 
@@ -63,13 +63,13 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="article">
         <![CDATA[
-        insert into t_article(title, author, content, abstracts, pub_time) values(#{title}, #{author}, #{content}, #{abstracts}, #{pubTime})
+        insert into t_article(title, type_id, author, content, abstracts, pub_time) values(#{title}, #{articleType.id}, #{author}, #{content}, #{abstracts}, #{pubTime})
         ]]>
     </insert>
 
     <update id="update" keyProperty="id" parameterType="article">
         <![CDATA[
-        update t_article set title = #{title}, author = #{author}, content = #{content}, abstracts=#{abstracts} where id = #{id}
+        update t_article set title = #{title}, type_id=#{articleType.id}, author = #{author}, content = #{content}, abstracts=#{abstracts} where id = #{id}
         ]]>
     </update>
 

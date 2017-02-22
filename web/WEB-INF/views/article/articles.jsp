@@ -29,6 +29,12 @@
     <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+        function type(value) {
+            return value.name;
+        }
+    </script>
 </head>
 <body>
 <table id="list" class="easyui-datagrid" toolbar="#tb" style="height:100%;"
@@ -53,18 +59,20 @@
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="title" width="150">标题</th>
         <th field="author" width="80">作者</th>
-        <th field="abstracts" width="150">文章摘要</th>
-        <th field="content" width="200">内容</th>
-        <th field="type" width="80">文章类型</th>
-        <th field="pubTime" width="120" formatter="formatterDate">发布时间</th>
+        <th field="abstracts" width="200">文章摘要</th>
+        <th field="content" data-options="hidden:'true'"></th>
+        <th field="articleType" width="80" formatter="type">文章类型</th>
+        <th field="pubTime" width="150" formatter="formatterDate">发布时间</th>
     </tr>
     </thead>
 </table>
 <div id="tb">
     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-       onclick="openWinFitPos('addWin');">添加</a>
+       onclick="openAddWinFitPos('addWin', 'addEditor');">添加</a>
     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-       onclick="showEdit();">修改</a>
+    onclick="showEdit();">修改</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" plain="true"
+       onclick="seeContent();">查看内容</a>
 </div>
 
 <div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加文章',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
@@ -77,6 +85,17 @@
 
                 <td><input type="text" name="title" class="easyui-validatebox easyui-textbox"
                            data-options="required:true,novalidate:true" style="width: 600px;"/></td>
+            </tr>
+            <tr>
+                <td>文章类型:</td>
+            </tr>
+            <tr>
+
+                <td>
+                    <select id="addTypeId" name="articleType.id" class="easyui-validatebox easyui-combobox"
+                            data-options="url:'<%=path %>/articleType/all_type',method:'get',valueField:'id',textField:'text',
+                           panelHeight:'auto',editable:false,required:true,novalidate:true" style="width: 600px;"></select>
+                </td>
             </tr>
             <tr>
                 <td>作者:</td>
@@ -126,11 +145,21 @@
                            data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
+                <td>文章类型:</td>
+            </tr>
+            <tr>
+
+                <td>
+                    <select id="editTypeId" name="articleType.id" class="easyui-validatebox easyui-combobox"
+                            data-options="editable:false,required:true,novalidate:true" style="width: 600px;"></select>
+                </td>
+            </tr>
+            <tr>
                 <td>作者:</td>
             </tr>
             <tr>
-                <td><input name="abstracts" class="easyui-textbox easyui-textbox"
-                           data-options="multiline:true" style="height: 100px; width: 600px;"/></td>
+                <td><input type="text" name="author" class="easyui-validatebox easyui-textbox"
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>文章摘要</td>
@@ -138,7 +167,8 @@
             <tr>
 
                 <td>
-                    <input type="text" style="width: 600px;" name="abstracts" class="easyui-textbox easyui-textbox" data-options="required:true,novalidate:true" style="height: 100px; width: 600px;"/>
+                    <input name="abstracts" class="easyui-textbox easyui-textbox"
+                           data-options="multiline:true" style="height: 100px; width: 600px;"/>
                 </td>
             </tr>
             <tr>
@@ -159,6 +189,10 @@
     </form>
 </div>
 
+<div class="easyui-window site_win_small input_big" id="seeWin" data-options="title:'查看文章',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
+    <div id="content"></div>
+</div>
+
 </body>
 <script src="<%=path %>/js/window.js"></script>
 <script type="text/javascript">
@@ -174,5 +208,6 @@
     $(function() {
         setWin();
     });
+
 </script>
 </html>

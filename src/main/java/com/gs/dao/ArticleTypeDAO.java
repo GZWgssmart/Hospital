@@ -20,4 +20,6 @@ public interface ArticleTypeDAO extends BaseDAO<ArticleType, String> {
 
     public List<ArticleType> queryByTitle();
 
+
+
 }

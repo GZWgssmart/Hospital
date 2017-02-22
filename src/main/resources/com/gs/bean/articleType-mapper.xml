@@ -24,6 +24,12 @@
         ]]>
     </select>
 
+    <select id="queryAll" resultMap="atResultMap">
+        <![CDATA[
+        select * from t_article_type
+        ]]>
+    </select>
+
     <select id="queryByPagerAndCriteria" resultType="list" resultMap="atResultMap">
         <![CDATA[
         select * from t_article_type where 1 = 1

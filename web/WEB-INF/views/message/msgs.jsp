@@ -53,17 +53,19 @@
         <th field="id" checkbox="true" width="50">管理员ID</th>
         <th field="title" width="150">标题</th>
         <th field="author" width="80">作者</th>
-        <th field="abstracts" width="150">摘要</th>
-        <th field="content" width="200">内容</th>
-        <th field="sendTime" width="120" formatter="formatterDate">发布时间</th>
+        <th field="abstracts" width="200">摘要</th>
+        <th field="content" data-options="hidden:'true'"></th>
+        <th field="sendTime" width="150" formatter="formatterDate">发布时间</th>
     </tr>
     </thead>
 </table>
 <div id="tb">
     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-       onclick="openWinFitPos('addWin');">添加</a>
+       onclick="openAddWinFitPos('addWin', 'addEditor');">添加</a>
     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
        onclick="showEdit();">修改</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" plain="true"
+       onclick="seeContent();">查看内容</a>
 </div>
 
 <div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加系统消息',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
@@ -155,6 +157,10 @@
             </tr>
         </table>
     </form>
+</div>
+
+<div class="easyui-window site_win_small input_big" id="seeWin" data-options="title:'查看内容',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
+    <div id="content"></div>
 </div>
 
 </body>

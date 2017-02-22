@@ -48,3 +48,14 @@ function setWin() {
         }
     });
 }
+
+function seeContent() {
+    var row = selectedRow("list");
+    if (row) {
+        openWin("seeWin");
+        var div = document.getElementById("content");
+        div.innerHTML = row.content;
+    } else {
+        $.messager.alert("提示", "请选择需要查看的内容", "error");
+    }
+}

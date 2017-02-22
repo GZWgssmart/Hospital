@@ -153,6 +153,11 @@ function openWin(id) {
     $("#" + id).window("open");
 }
 
+function openAddWin(id, uid) {
+    UE.getEditor(uid).setContent("", false);
+    $("#" + id).window("open");
+}
+
 function openWinFitPos(id) {
     var top = ($(document.body).height() - $("#" + id).height()) / 2 - 28;
     var left = ($(document.body).width() - $("#" + id).width()) / 2 - 18;
@@ -161,6 +166,16 @@ function openWinFitPos(id) {
         left:left
     });
     openWin(id);
+}
+
+function openAddWinFitPos(id, uid) {
+    var top = ($(document.body).height() - $("#" + id).height()) / 2 - 28;
+    var left = ($(document.body).width() - $("#" + id).width()) / 2 - 18;
+    $("#" + id).window({
+        top:top,
+        left:left
+    });
+    openAddWin(id, uid);
 }
 
 function closeWin(id) {

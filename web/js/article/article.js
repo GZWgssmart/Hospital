@@ -36,11 +36,19 @@ function add() {
 function showEdit() {
     var row = selectedRow("list");
     if (row) {
+        $("#editTypeId").combobox({
+            url: '/articleType/all_type/',
+            method:'get',
+            valueField:'id',
+            textField:'text',
+            panelHeight:'auto'
+        });
+        $('#editTypeId').combobox('select', row.articleType.id);
         $("#editForm").form("load", row);
         UE.getEditor("editEditor").setContent(row.content,false);
         openWin("editWin");
     } else {
-        $.messager.alert("提示", "请选择需要修改的文章信息", "info");
+        $.messager.alert("提示", "请选择需要修改的文章信息", "error");
     }
 }
 
