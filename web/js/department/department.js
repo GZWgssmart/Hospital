@@ -37,6 +37,7 @@ function showEdit() {
     var row = selectedRow("list");
     if (row) {
         $("#editForm").form("load", row);
+        UE.getEditor("editEditor").setContent(row.des,false);
         openWin("editWin");
     } else {
         $.messager.alert("提示", "请选择需要修改的科室信息", "info");

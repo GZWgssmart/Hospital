@@ -46,7 +46,7 @@
     <div class="container">
         <div class="header-left">
             <div class="logo">
-                <h1><a href="index.html">***医院</a></h1>
+                <h1><a href="index.html">${requestScope.hospital.name}</a></h1>
             </div>
         </div>
         <div class="header-right">
@@ -68,10 +68,13 @@
                     <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
                     <ul class="nav1">
                         <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/dept/search_pager_type">科室信息</a></li>
+                        <li class="hvr-sweep-to-top"><a href="<%=path %>/doctor/search_pager_type">医生信息</a></li>
                         <c:forEach items="${requestScope.articleTypes}" var="at">
                             <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a></li>
                         </c:forEach>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -86,8 +89,12 @@
                 <div class="news-section-grids">
                     <c:forEach items="${requestScope.newss}" var="news">
                         <div class="col-md-4 news-section-grid">
-                            <div class="article_post">
+                            <div class="article_post" style="border:1px solid #778899; height: 300px; text-align: center; padding: 10px;">
                                 <a class="news-post" href="<%=path %>/news/queryById/${news.id}">${news.title}</a>
+                                <br />
+                                <a class="news-post" href="<%=path %>/news/queryById/${news.id}">
+                                    <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${news.abstracts}</p>
+                                </a>
                             </div>
                         </div>
                     </c:forEach>
@@ -105,19 +112,24 @@
 <div class="footer">
     <div class="container">
         <div class="footer-bottom-at">
-            <div class="col-md-6 footer-grid">
-                <h3>***医院</h3>
-                <p>医院的简介</p>
+            <div class="col-md-5 footer-grid">
+                <h3>${requestScope.hospital.name}</h3>
+                <p>${requestScope.hospital.des}</p>
             </div>
-            <div class="col-md-6 footer-grid-in">
+            <div class="col-md-7 footer-grid-in">
                 <ul class="footer-nav">
                     <li><a class="scroll" href="#move-top">主页</a>|</li>
                     <c:forEach items="${requestScope.articleTypes}" var="at">
                         <li><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a>|</li>
                     </c:forEach>
+                    <li><a href="<%=path %>/dept/search_pager_type">科室信息</a>|</li>
+                    <li><a href="<%=path %>/doctor/search_pager_type">医生信息</a>|</li>
                     <li><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
                 </ul>
                 <p class="footer-class">地址：赣州市&nbsp;&nbsp;技术支持:Wgssmart </p>
+            </div>
+            <div style="text-align: center;">
+                医院地址：${requestScope.hospital.address}&nbsp;&nbsp;<a href="${requestScope.hospital.webAddress}">${requestScope.hospital.webAddress}</a>
             </div>
             <div class="clearfix"></div>
         </div>

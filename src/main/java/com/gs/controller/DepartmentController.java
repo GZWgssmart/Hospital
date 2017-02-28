@@ -118,4 +118,27 @@ public class DepartmentController {
         return cobox;
     }
 
+    @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
+    public ModelAndView searchPagerByType(@Param("page") String page, @Param("rows") String rows, Department dept, HttpSession session) {
+        logger.info("show department info by pager");
+        int total = departmentService.countByCriteria(dept);
+        Pager pager = PagerUtil.getPager(page, rows, total);
+        List<Department> deptList = departmentService.queryByPagerAndCriteria(pager, dept);
+        Pager4EasyUI<Department> pagers = new Pager4EasyUI<Department>(pager.getTotalRecords(), deptList);
+        pagers.setRows(deptList);
+        pagers.setTotal(total);
+        ModelAndView mav = new ModelAndView("department/deptList");
+        mav.addObject("pagers", pagers);
+        mav.addObject("pager", pager);
+        return mav;
+    }
+
+    @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView("department/deptDetail");
+        Department dept = departmentService.queryById(id);
+        mav.addObject("dept", dept);
+        return mav;
+    }
+
 }

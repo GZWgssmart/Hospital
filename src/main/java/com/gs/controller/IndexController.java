@@ -1,8 +1,10 @@
 package com.gs.controller;
 
 import com.gs.bean.ArticleType;
+import com.gs.bean.Hospital;
 import com.gs.bean.News;
 import com.gs.service.ArticleTypeService;
+import com.gs.service.HospitalService;
 import com.gs.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,13 +28,18 @@ public class IndexController {
     @Resource
     private ArticleTypeService ats;
 
+    @Resource
+    private HospitalService hospitalService;
+
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("index/home");
         List<News> newss = newsService.queryByTitle();
         List<ArticleType> articleTypes = ats.queryByTitle();
+        Hospital hospital = hospitalService.query(new Hospital());
         mav.addObject("newss", newss);
         mav.addObject("articleTypes", articleTypes);
+        mav.addObject("hospital", hospital);
         return mav;
     }
 

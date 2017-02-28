@@ -56,11 +56,12 @@ public class DoctorController {
         }
     }
 
+
     @ResponseBody
     @RequestMapping(value = "search_pager", method = RequestMethod.GET)
-    public Pager4EasyUI<Doctor> searchPager(@Param("page")String page, @Param("rows")String rows, Doctor doctor, HttpSession session) {
+    public Pager4EasyUI<Doctor> searchPager(@Param("page") String page, @Param("rows") String rows, Doctor doctor, HttpSession session) {
         if (SessionUtil.isAdmin(session)) {
-            logger.info("show doctor info by pager");
+            logger.info("show news info by pager");
             int total = doctorService.countByCriteria(doctor);
             Pager pager = PagerUtil.getPager(page, rows, total);
             List<Doctor> departments = doctorService.queryByPagerAndCriteria(pager, doctor);
@@ -69,6 +70,21 @@ public class DoctorController {
             logger.info("can not show admin info by pager cause admin is not login");
             return null;
         }
+    }
+
+    @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
+    public ModelAndView searchPagerByType(@Param("page") String page, @Param("rows") String rows, Doctor doctor, HttpSession session) {
+        logger.info("show news info by pager");
+        int total = doctorService.countByCriteria(doctor);
+        Pager pager = PagerUtil.getPager(page, rows, total);
+        List<Doctor> newses = doctorService.queryByPagerAndCriteria(pager, doctor);
+        Pager4EasyUI<Doctor> pagers = new Pager4EasyUI<Doctor>(pager.getTotalRecords(), newses);
+        pagers.setRows(newses);
+        pagers.setTotal(total);
+        ModelAndView mav = new ModelAndView("doctor/doctorList");
+        mav.addObject("pagers", pagers);
+        mav.addObject("pager", pager);
+        return mav;
     }
 
     @RequestMapping(value = "query/{id}", method = RequestMethod.GET)
@@ -101,4 +117,12 @@ public class DoctorController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
+
+    @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView("doctor/doctorDetail");
+        Doctor doctor = doctorService.queryById(id);
+        mav.addObject("doctor", doctor);
+        return mav;
+    }
 }

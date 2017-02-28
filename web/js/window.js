@@ -59,3 +59,14 @@ function seeContent() {
         $.messager.alert("提示", "请选择需要查看的内容", "error");
     }
 }
+
+function seeDes() {
+    var row = selectedRow("list");
+    if (row) {
+        openWin("seeWin");
+        var div = document.getElementById("des");
+        div.innerHTML = row.des;
+    } else {
+        $.messager.alert("提示", "请选择需要查看的描述信息", "error");
+    }
+}

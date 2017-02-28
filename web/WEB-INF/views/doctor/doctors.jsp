@@ -26,6 +26,10 @@
 
     <script src="<%=path %>/js/doctor/doctor.js"></script>
 
+    <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="<%=path %>/ueditor/lang/zh-cn/zh-cn.js"></script>
+
     <script type="text/javascript">
         function dept(value) {
             return value.name;
@@ -56,7 +60,6 @@
         <th field="name" width="150">名称</th>
         <th field="major" width="100">专长</th>
         <th field="dept" width="80" formatter="dept">科室</th>
-        <th field="des" width="200">描述</th>
     </tr>
     </thead>
 </table>
@@ -65,34 +68,35 @@
        onclick="openWinFitPos('addWin');">添加</a>
     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
        onclick="showEdit();">修改</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" plain="true"
+       onclick="seeDes();">查看描述</a>
 </div>
 
-<div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加管理员',resizable:false,mode:true,closed:true">
+<div class="easyui-window site_win_small input_big" id="addWin" data-options="title:'添加医生',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
     <form:form id="addForm" modelAttribute="doctor">
         <table>
             <tr>
                 <td>姓名:</td>
                 <td><input type="text" name="name" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>专长:</td>
                 <td><input type="text" name="major" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>科室:</td>
                 <td>
                     <select id="addDeptId" name="dept.id" class="easyui-validatebox easyui-combobox"
                             data-options="url:'<%=path %>/dept/all',method:'get',valueField:'id',textField:'text',
-                           panelHeight:'auto',editable:false,required:true,novalidate:true"></select>
+                           panelHeight:'auto',editable:false,required:true,novalidate:true" style="width: 600px;"></select>
                 </td>
             </tr>
             <tr>
                 <td>描述:</td>
                 <td>
-                    <input name="des" class="easyui-textbox"
-                           data-options="multiline:true,required:true,novalidate:true" style="height: 100px;"/>
+                    <script id="addEditor" type="text/plain" name="des" style="width: 600px; height: 200px;"></script>
                 </td>
             </tr>
             <tr>
@@ -105,31 +109,32 @@
     </form:form>
 </div>
 
-<div class="easyui-window site_win_small input_big" id="editWin" data-options="title:'修改管理员',resizable:false,mode:true,closed:true">
+<div class="easyui-window site_win_small input_big" id="editWin" data-options="title:'修改医生信息',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
     <form id="editForm" modelAttribute="doctor">
         <input type="hidden" name="id" />
         <table>
             <tr>
                 <td>姓名:</td>
                 <td><input type="text" name="name" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>专长:</td>
                 <td><input type="text" name="major" class="easyui-validatebox easyui-textbox"
-                           data-options="required:true,novalidate:true"/></td>
+                           data-options="required:true,novalidate:true" style="width: 600px;"/></td>
             </tr>
             <tr>
                 <td>科室:</td>
                 <td>
                     <select id="editDeptId" name="dept.id" class="easyui-validatebox easyui-combobox"
-                            data-options="editable:false,required:true,novalidate:true"></select>
+                            data-options="editable:false,required:true,novalidate:true" style="width: 600px;"></select>
                 </td>
             </tr>
             <tr>
                 <td>描述:</td>
-                <td><input name="des" class="easyui-textbox"
-                           data-options="multiline:true,required:true,novalidate:true" style="height: 100px;"/></td>
+                <td>
+                    <script id="editEditor" type="text/plain" name="des" style="width: 600px; height: 200px;"></script>
+                </td>
             </tr>
             <tr>
                 <td></td>
@@ -141,5 +146,25 @@
     </form>
 </div>
 
+<div class="easyui-window site_win_small input_big" id="seeWin" data-options="title:'查看描述',resizable:false,mode:true,closed:true" style="width:700px; height: 400px">
+    <div id="des"></div>
+</div>
+
 </body>
+<script src="<%=path %>/js/window.js"></script>
+<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('addEditor');
+    var ue1 = UE.getEditor('editEditor');
+
+    ue.ready(function() {
+        ue.setContent("");
+    });
+
+    $(function() {
+        setWin();
+    });
+
+</script>
 </html>

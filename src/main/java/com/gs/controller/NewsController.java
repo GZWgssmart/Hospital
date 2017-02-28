@@ -58,7 +58,6 @@ public class NewsController {
         }
     }
 
-    @ResponseBody
     @RequestMapping(value = "search_pager_type", method = RequestMethod.GET)
     public ModelAndView searchPagerByType(@Param("page") String page, @Param("rows") String rows, News news, HttpSession session) {
         logger.info("show news info by pager");
