@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/2/16
@@ -40,6 +40,8 @@
 
                         <h2>${doctor.name}</h2>
                         <div class="small m-b-xs">
+			                <strong>科室：${doctor.dept.name}</strong>
+                            <br />
                             <a href="<%=path %>/doctor/queryById/${doctor.id}" class="btn-link title">
                                 专长：<strong>${doctor.major}</strong></span>
                             </a>
