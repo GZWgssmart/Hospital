@@ -38,6 +38,13 @@
         });
     </script>
     <!-- start-smoth-scrolling -->
+    <style>
+        .img img {
+            width: 100px;
+            height: 100px;
+            border-radius:50%;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,53 +67,110 @@
     </div>
 </div>
 <!-- 头部结束 -->
-<div class="header-banner">
-    <div class="banner">
-        <div class="container">
-            <div class="banner-navigation">
-                <div class="banner-nav">
-                    <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
-                    <ul class="nav1">
-                        <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/dept/search_pager_type">科室信息</a></li>
-                        <li class="hvr-sweep-to-top"><a href="<%=path %>/doctor/search_pager_type">医生信息</a></li>
-                        <c:forEach items="${requestScope.articleTypes}" var="at">
-                            <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a></li>
-                        </c:forEach>
-
-                    </ul>
+<div class="service-section" id="services">
+    <div class="container">
+        <div class="service-section-grids">
+            <div class="col-md-3 service-grid">
+                <div class="service-section-grid">
+                    <div class="img">
+                        <a href="<%=path %>/news/search_pager_type">
+                            <img src="/images/news.jpg" alt="新闻动态"/>
+                        </a>
+                    </div>
+                    <div class="icon-text">
+                        <a href="<%=path %>/news/search_pager_type">新闻动态</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- 控制导航菜单的JavaScript开始 -->
-        <!-- 新闻开始 -->
-        <div class="news" id="news">
-            <div class="container">
-                <div class="news-section-head text-center">
-                    <h3>新闻动态</h3>
+            <div class="col-md-3 service-grid">
+                <div class="service-section-grid">
+                    <div class="img">
+                        <a href="<%=path %>/dept/search_pager_type">
+                            <img src="/images/dept.jpg" alt="科室信息"/>
+                        </a>
+                    </div>
+                    <div class="icon-text">
+                        <a href="<%=path %>/dept/search_pager_type">科室信息</a>
+                    </div>
                 </div>
-                <div class="news-section-grids">
-                    <c:forEach items="${requestScope.newss}" var="news">
-                        <div class="col-md-4 news-section-grid">
-                            <div class="article_post" style="border:1px solid #778899; height: 300px; text-align: center; padding: 10px;">
-                                <a class="news-post" href="<%=path %>/news/queryById/${news.id}">${news.title}</a>
-                                <br />
-                                <a class="news-post" href="<%=path %>/news/queryById/${news.id}">
-                                    <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${news.abstracts}</p>
-                                </a>
-                            </div>
+            </div>
+            <div class="col-md-3 service-grid">
+                <div class="service-section-grid">
+                    <div class="img">
+                        <a href="<%=path %>/doctor/search_pager_type">
+                            <img src="/images/doctor.jpg" alt="医生信息"/>
+                        </a>
+                    </div>
+                    <div class="icon-text">
+                        <a href="<%=path %>/doctor/search_pager_type">医生信息</a>
+                    </div>
+                </div>
+            </div>
+            <c:forEach items="${requestScope.articleTypes}" var="at" begin="0" end="4" varStatus="s">
+                <div class="col-md-3 service-grid">
+                    <div class="service-section-grid">
+                        <div class="img">
+                            <a href="<%=path %>/article/search_pager_type?type=${at.name}">
+                                <img src="/images/${s.index}.jpg" alt="${at.name}"/>
+                            </a>
                         </div>
-                    </c:forEach>
-
-
-                    <div class="clearfix"></div>
+                        <div class="icon-text">
+                            <a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </c:forEach>
+
+            <div class="clearfix"></div>
         </div>
-        <%--新闻结束--%>
     </div>
 </div>
+<%--
+<div class="container">
+    <div class="banner-navigation">
+        <div class="banner-nav">
+            <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
+            <ul class="nav1">
+                <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
+                <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
+                <li class="hvr-sweep-to-top"><a href="<%=path %>/dept/search_pager_type">科室信息</a></li>
+                <li class="hvr-sweep-to-top"><a href="<%=path %>/doctor/search_pager_type">医生信息</a></li>
+                <c:forEach items="${requestScope.articleTypes}" var="at">
+                    <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a></li>
+                </c:forEach>
+
+            </ul>
+        </div>
+    </div>
+</div>
+--%>
+<!-- 新闻开始 -->
+<%--
+<div class="news" id="news">
+    <div class="container">
+        <div class="news-section-head text-center">
+            <h3>新闻动态</h3>
+        </div>
+        <div class="news-section-grids">
+            <c:forEach items="${requestScope.newss}" var="news">
+                <div class="col-md-4 news-section-grid">
+                    <div class="article_post" style="border:1px solid #778899; height: 300px; text-align: center; padding: 10px;">
+                        <a class="news-post" href="<%=path %>/news/queryById/${news.id}">${news.title}</a>
+                        <br />
+                        <a class="news-post" href="<%=path %>/news/queryById/${news.id}">
+                            <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${news.abstracts}</p>
+                        </a>
+                    </div>
+                </div>
+            </c:forEach>
+
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+--%>
+<%--新闻结束--%>
 
 <!-- 底部开始 -->
 <div class="footer">
@@ -129,7 +193,8 @@
                 <p class="footer-class">地址：赣州市&nbsp;&nbsp;技术支持:Wgssmart </p>
             </div>
             <div style="text-align: center;">
-                医院地址：${requestScope.hospital.address}&nbsp;&nbsp;<a href="${requestScope.hospital.webAddress}">${requestScope.hospital.webAddress}</a>
+                医院地址：${requestScope.hospital.address}&nbsp;&nbsp;<a
+                    href="${requestScope.hospital.webAddress}">${requestScope.hospital.webAddress}</a>
             </div>
             <div class="clearfix"></div>
         </div>
