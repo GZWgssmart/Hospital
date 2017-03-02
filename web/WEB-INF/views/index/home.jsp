@@ -44,6 +44,12 @@
             height: 100px;
             border-radius:50%;
         }
+        #services a {
+            color: black;
+        }
+        #services a:hover {
+            color: #ff9900;
+        }
     </style>
 </head>
 
@@ -67,10 +73,10 @@
     </div>
 </div>
 <!-- 头部结束 -->
-<div class="service-section" id="services">
+<div class="service-section" id="services"  style="background-color: white;">
     <div class="container">
         <div class="service-section-grids">
-            <div class="col-md-3 service-grid">
+            <div class="col-md-3 col-sm-4 col-xs-6 service-grid">
                 <div class="service-section-grid">
                     <div class="img">
                         <a href="<%=path %>/news/search_pager_type">
@@ -82,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 service-grid">
+            <div class="col-md-3 col-sm-4 col-xs-6 service-grid">
                 <div class="service-section-grid">
                     <div class="img">
                         <a href="<%=path %>/dept/search_pager_type">
@@ -94,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 service-grid">
+            <div class="col-md-3 col-sm-4 col-xs-6 service-grid">
                 <div class="service-section-grid">
                     <div class="img">
                         <a href="<%=path %>/doctor/search_pager_type">
@@ -107,7 +113,7 @@
                 </div>
             </div>
             <c:forEach items="${requestScope.articleTypes}" var="at" begin="0" end="4" varStatus="s">
-                <div class="col-md-3 service-grid">
+                <div class="col-md-3 col-sm-4 col-xs-6 service-grid">
                     <div class="service-section-grid">
                         <div class="img">
                             <a href="<%=path %>/article/search_pager_type?type=${at.name}">
@@ -125,62 +131,16 @@
         </div>
     </div>
 </div>
-<%--
-<div class="container">
-    <div class="banner-navigation">
-        <div class="banner-nav">
-            <span class="menu"><img src="<%=path %>/images/menu.png" alt=" "/></span>
-            <ul class="nav1">
-                <li class="hvr-sweep-to-top cap"><a href="<%=path %>/index">主页</a></li>
-                <li class="hvr-sweep-to-top"><a href="<%=path %>/news/search_pager_type">新闻动态</a></li>
-                <li class="hvr-sweep-to-top"><a href="<%=path %>/dept/search_pager_type">科室信息</a></li>
-                <li class="hvr-sweep-to-top"><a href="<%=path %>/doctor/search_pager_type">医生信息</a></li>
-                <c:forEach items="${requestScope.articleTypes}" var="at">
-                    <li class="hvr-sweep-to-top"><a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a></li>
-                </c:forEach>
-
-            </ul>
-        </div>
-    </div>
-</div>
---%>
-<!-- 新闻开始 -->
-<%--
-<div class="news" id="news">
-    <div class="container">
-        <div class="news-section-head text-center">
-            <h3>新闻动态</h3>
-        </div>
-        <div class="news-section-grids">
-            <c:forEach items="${requestScope.newss}" var="news">
-                <div class="col-md-4 news-section-grid">
-                    <div class="article_post" style="border:1px solid #778899; height: 300px; text-align: center; padding: 10px;">
-                        <a class="news-post" href="<%=path %>/news/queryById/${news.id}">${news.title}</a>
-                        <br />
-                        <a class="news-post" href="<%=path %>/news/queryById/${news.id}">
-                            <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${news.abstracts}</p>
-                        </a>
-                    </div>
-                </div>
-            </c:forEach>
-
-
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
---%>
-<%--新闻结束--%>
 
 <!-- 底部开始 -->
 <div class="footer">
     <div class="container">
         <div class="footer-bottom-at">
-            <div class="col-md-5 footer-grid">
+            <div class="col-md-5 col-xl-12 footer-grid">
                 <h3>${requestScope.hospital.name}</h3>
                 <p>${requestScope.hospital.des}</p>
             </div>
-            <div class="col-md-7 footer-grid-in">
+            <div class="col-md-7 col-xl-12 footer-grid-in">
                 <ul class="footer-nav">
                     <li><a class="scroll" href="#move-top">主页</a>|</li>
                     <c:forEach items="${requestScope.articleTypes}" var="at">
