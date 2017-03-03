@@ -30,10 +30,18 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+
+.container {
+    width:1366px;
+    padding-left:1em;
+    padding-right:1em;
+}
+
 /*-- header --*/
 .header{
 	background:#ff9900;
 	padding:1em 0;
+    height:8em;
 }
 .header-left{
 	float:left;
@@ -44,13 +52,16 @@ body a:hover{
 .header-right{
 	float:right;
 }
-.header-right ul{
-	padding:.2em 0 0;
-	margin:0;
-}
+
 .header-right ul li{
 	display:inline-block;
 }
+
+.header-right ul li a {
+    font-size:3em;
+    font-weight: bold;
+}
+
 .header-right ul li i.facebook{
 	display: block;
 	height: 40px;
@@ -87,12 +98,17 @@ body a:hover{
 .form-control,.btn {
   border-radius: inherit !important;
 }
+
+.logo {
+    padding-top:1em;
+}
+
 .logo a {
 	color: rgb(255, 255, 255);
-	font-size: 1em;
+	font-size: 1.5em;
 	text-decoration: none;
 	display: block;
-	font-weight: 600;
+	font-weight: bold;
 }
 .logo h1 {
 	margin:0.15em 0 0 0;
@@ -457,7 +473,7 @@ button.btn.btn-default {
 }
 .icon-text a {
     color: #fff;
-    font-size: 1.4em;
+    font-size: 3em;
     text-transform: capitalize;
 	text-decoration:none;
 }
@@ -1680,7 +1696,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 		margin: 5em 0 0;
 	}
 	.header-right ul {
-		padding: .35em 0 0;
+		padding: 2em 0 0;
 	}
 	.footer-bottom-left {
 		margin-top: 1.1em;
