@@ -28,6 +28,12 @@
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 
+    <style>
+        .my-font {
+            font-size: 0.5em;
+        }
+    </style>
+
 </head>
 
 <body class="gray-bg">
@@ -57,34 +63,28 @@
             </div>
             <div class="mail-box">
 
-                <table class="table table-hover table-mail">
+                <table class="table table-hover table-mail my-font">
                     <tr class="unread">
-                        <td class="check-mail">
-                            <input type="checkbox" class="i-checks">
-                        </td>
                         <td class="mail-ontact">消息标题
                         </td>
                         <td class="mail-subject">消息的内容
                         </td>
-                        <td class="text-right mail-date">发布的时间</td>
-                        <td class="text-right">操作</td>
+                        <td class="mail-date">发布的时间</td>
+                        <td>操作</td>
                     </tr>
 
                     <c:forEach items="${requestScope.messages.rows}" var="msg" >
                         <tr class="read">
-                            <td class="check-mail">
-                                <input type="checkbox" class="i-checks">
-                            </td>
                             <td class="mail-ontact"><a href="<%=path %>/msg/queryById/${msg.id}">${msg.title}</a>
                             </td>
                             <td class="mail-subject"><a href="<%=path %>/msg/queryById/${msg.id}">${msg.abstracts}</a>
                             </td>
-                            <td class="text-right mail-date">
-                                <fmt:formatDate value="${msg.sendTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+                            <td class="mail-date">
+                                <fmt:formatDate value="${msg.sendTime}" pattern="yyyy/MM/dd" />
 
                             </td>
-                            <td class="text-right">
-                                <a href="<%=path %>/msg/queryById/${msg.id}" style="color: dodgerblue">详情</a>
+                            <td>
+                                <a href="<%=path %>/msg/queryById/${msg.id}" style="color: #99cdff;">详情</a>
 
                             </td>
                         </tr>

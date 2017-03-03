@@ -27,13 +27,14 @@
     <link href="<%=path %>/css/animate.css" rel="stylesheet">
     <link href="<%=path %>/css/style.css?v=4.1.0" rel="stylesheet">
 
+
 </head>
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
     <div class="row">
 
-        <div class="col-sm-12 animated fadeInRight">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 animated">
             <div class="mail-box-header">
 
                 <h2>
@@ -47,7 +48,7 @@
                     </h3>
                     <h5>
                         <span class="pull-right font-noraml">
-                            <fmt:formatDate value="${requestScope.msg.sendTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                            <fmt:formatDate value="${requestScope.msg.sendTime}" pattern="yyyy/MM/dd"></fmt:formatDate>
                         </span>
                         <span class="font-noraml">发布人： </span>${requestScope.msg.author}
                     </h5>
@@ -56,7 +57,7 @@
             <div class="mail-box">
 
 
-                <div class="mail-body">
+                <div class="mail-body context">
                     <h4>消息内容：</h4>
                     <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;${requestScope.msg.content}
@@ -64,7 +65,7 @@
 
                 </div>
 
-                <div class="mail-body text-right tooltip-demo">
+                <div class="mail-body text-left tooltip-demo">
                     <a class="btn btn-sm btn-white" href="<%=path %>/msg/msg_pager?page=1&rows=10"><img src="<%=path %>/images/left.png" /> 返回列表</a>
                 </div>
                 <div class="clearfix"></div>

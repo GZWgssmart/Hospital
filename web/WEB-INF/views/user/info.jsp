@@ -56,17 +56,17 @@
                             注册时间：
                         </h5>
                         <p style="padding-left: 20px;">
-                            <fmt:formatDate value="${sessionScope.user.createdTime }" var="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                            <fmt:formatDate value="${sessionScope.user.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
 
                         </p>
 
                         <div class="user-button">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <a data-toggle="modal" class="btn btn-primary" href="<%=path %>/user/query/${sessionScope.user.id }#update-form"><img src="<%=path %>/images/edit.png" width="16" height="16">编辑资料</a>
+                                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                                    <a data-toggle="modal" class="btn btn-primary" href="#update-form"><img src="<%=path %>/images/edit.png" width="16" height="16">编辑资料</a>
                                 </div>
-                                <div class="col-sm-6">
-                                    <a data-toggle="modal" class="btn btn-primary" href="<%=path %>/user/query/${sessionScope.user.id }#pwd-form"><img src="<%=path %>/images/edit.png" width="16" height="16">修改密码</a>
+                                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                                    <a data-toggle="modal" class="btn btn-primary" href="#pwd-form"><img src="<%=path %>/images/edit.png" width="16" height="16">修改密码</a>
 
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label>注册时间：</label>
                                 <p class="form-control-static">
-                                    <fmt:formatDate value="${sessionScope.user.createdTime }" var="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                                    <fmt:formatDate value="${sessionScope.user.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
                                 </p>
                             </div>
                             <div>
