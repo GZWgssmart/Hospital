@@ -89,11 +89,23 @@
             <div class="service-section-grid">
                 <div class="img">
                     <a href="<%=path %>/news/search_pager_type">
-                        <img src="/images/news.jpg" alt="新闻动态"/>
+                        <img src="/images/news.jpg" title="新闻动态"/>
                     </a>
                 </div>
                 <div class="icon-text">
-                    <a href="<%=path %>/news/search_pager_type">新闻动态</a>
+                    <a href="<%=path %>/news/search_pager_type" title="新闻动态">新闻动态</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 col-lg-3 my-icon">
+            <div class="service-section-grid">
+                <div class="img">
+                    <a href="<%=path %>/hospital/queryById/${requestScope.hospital.id}">
+                        <img src="/images/hospital.jpg" title="医院信息"/>
+                    </a>
+                </div>
+                <div class="icon-text">
+                    <a href="<%=path %>/hospital/queryById/${requestScope.hospital.id}" title="医院信息">医院信息</a>
                 </div>
             </div>
         </div>
@@ -101,11 +113,11 @@
             <div class="service-section-grid">
                 <div class="img">
                     <a href="<%=path %>/dept/search_pager_type">
-                        <img src="/images/dept.jpg" alt="科室信息"/>
+                        <img src="/images/dept.jpg" title="科室信息"/>
                     </a>
                 </div>
                 <div class="icon-text">
-                    <a href="<%=path %>/dept/search_pager_type">科室信息</a>
+                    <a href="<%=path %>/dept/search_pager_type" title="科室信息">科室信息</a>
                 </div>
             </div>
         </div>
@@ -113,11 +125,11 @@
             <div class="service-section-grid">
                 <div class="img">
                     <a href="<%=path %>/doctor/search_pager_type">
-                        <img src="/images/doctor.jpg" alt="医生信息"/>
+                        <img src="/images/doctor.jpg" title="医生信息"/>
                     </a>
                 </div>
                 <div class="icon-text">
-                    <a href="<%=path %>/doctor/search_pager_type">医生信息</a>
+                    <a href="<%=path %>/doctor/search_pager_type" title="医生信息">医生信息</a>
                 </div>
             </div>
         </div>
@@ -126,11 +138,11 @@
                 <div class="service-section-grid">
                     <div class="img">
                         <a href="<%=path %>/article/search_pager_type?type=${at.name}">
-                            <img src="/images/${s.index}.jpg" alt="${at.name}"/>
+                            <img src="/images/${s.index}.jpg" title="${at.name}"/>
                         </a>
                     </div>
                     <div class="icon-text">
-                        <a href="<%=path %>/article/search_pager_type?type=${at.name}">${at.name}</a>
+                        <a href="<%=path %>/article/search_pager_type?type=${at.name}" title="${at.name}">${at.name}</a>
                     </div>
                 </div>
             </div>

@@ -9,10 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -78,6 +75,14 @@ public class HospitalController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
+    @RequestMapping(value = "queryById/{id}", method = RequestMethod.GET)
+    public ModelAndView userQueryById(@PathVariable("id") String id) {
+        ModelAndView mav = new ModelAndView("hospital/hospitalDetail");
+        Hospital hospital = hospitalService.queryById(id);
+        mav.addObject("hospital", hospital);
+        return mav;
     }
 
 }
