@@ -38,13 +38,11 @@
                 <div class="ibox">
                     <div class="ibox-content">
 
-                        <h2>${doctor.name}</h2>
+                        <h2><a href="<%=path %>/doctor/queryById/${doctor.id}" class="btn-link title">${doctor.name}</a></h2>
                         <div class="small m-b-xs">
-			                <strong>科室：${doctor.dept.name}</strong>
+			                <strong>科室：<a href="<%=path %>/dept/queryById/${doctor.dept.id}" class="btn-link title">${doctor.dept.name}</a></strong>
                             <br />
-                            <a href="<%=path %>/doctor/queryById/${doctor.id}" class="btn-link title">
                                 专长：<strong>${doctor.major}</strong></span>
-                            </a>
                         </div>
 
                         <p style="text-align: right">

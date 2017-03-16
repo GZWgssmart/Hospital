@@ -31,14 +31,19 @@
     <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
     <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
 
+    <style>
+        .my-content {
+            padding: 1em;
+        }
+    </style>
 </head>
 
 <body class="gray-bg" style="height:100%;">
 <div class="wrapper wrapper-content  animated fadeInRight article">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-            <div class="ibox" style="height: 70em;">
-                <div class="ibox-content">
+            <div class="ibox" style="height: 55em;">
+                <div class="my-content">
 
                     <div class="text-center article-title">
                         <h1>
@@ -67,7 +72,7 @@
 
                     </p>
                     <div><label>医院位置：</label></div>
-                    <div id="mymap" class="col-md-12 col-sm-12 col-xs-12 col-lg-12" style="height: 30em;"></div>
+                    <div id="mymap" class="col-md-12 col-sm-12 col-xs-12 col-lg-12" style="height: 20em;"></div>
 
                 </div>
             </div>
@@ -91,60 +96,16 @@
     map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
     map.setCurrentCity('${requestScope.hospital.address}');          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
     var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
     map.addControl(top_left_control);
-    // 添加带有定位的导航控件
-    var navigationControl = new BMap.NavigationControl({
-        // 靠左上角位置
-        anchor: BMAP_ANCHOR_TOP_LEFT,
-        // LARGE类型
-        type: BMAP_NAVIGATION_CONTROL_LARGE,
-        // 启用显示定位
-        enableGeolocation: true
-    });
-    map.addControl(navigationControl);
+    map.addControl(top_left_navigation);
+
     var marker = new BMap.Marker(point);// 创建标注
     map.addOverlay(marker);             // 将标注添加到地图中
     marker.disableDragging();           // 不可拖拽
-    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
-            '<img src="/${requestScope.hospital.image}" style="float:right;zoom:1;overflow:hidden;width:60px;height:60px;margin-left:3px;"/>' +
-            '地址：${requestScope.hospital.address}<br/>电话：${requestScope.hospital.telNo}<br/>简介：${requestScope.hospital.des}' +
-            '</div>';
 
-    //创建检索信息窗口对象
-    var searchInfoWindow = null;
-    searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
-        title  : "${requestScope.hospital.name}",      //标题
-        width  : 290,             //宽度
-        height : 80,              //高度
-        panel  : "panel",         //检索结果面板
-        enableAutoPan : true,     //自动平移
-        searchTypes   :[
-            BMAPLIB_TAB_SEARCH,   //周边检索
-            BMAPLIB_TAB_TO_HERE,  //到这里去
-            BMAPLIB_TAB_FROM_HERE //从这里出发
-        ]
-    });
-    marker.addEventListener("click", function(e){
-        searchInfoWindow.open(marker);
-    })
-    // 添加定位控件
-    var geolocationControl = new BMap.GeolocationControl();
-    geolocationControl.addEventListener("locationSuccess", function(e){
-        // 定位成功事件
-        var address = '';
-        address += e.addressComponent.province;
-        address += e.addressComponent.city;
-        address += e.addressComponent.district;
-        address += e.addressComponent.street;
-        address += e.addressComponent.streetNumber;
-        alert("当前定位地址为：" + address);
-    });
-    geolocationControl.addEventListener("locationError",function(e){
-        // 定位失败事件
-        alert(e.message);
-    });
-    map.addControl(geolocationControl);
 </script>
 
 

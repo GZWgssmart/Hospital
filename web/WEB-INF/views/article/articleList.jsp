@@ -38,7 +38,7 @@
                 <div class="ibox">
                     <div class="ibox-content">
 
-                        <h2>${article.title}</h2>
+                        <h2><a href="<%=path %>/article/queryById/${article.id}/${requestScope.articleType}">${article.title}</a></h2>
                         <div class="small m-b-xs">
                             <strong>${article.author}</strong> <span class="text-muted"><img src="<%=path %>/images/full-time.png" />
                                 <fmt:formatDate value="${article.pubTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
